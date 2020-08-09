@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('mywelcome');
 
 //ログインページ
 Route::any('loginPage',['uses'=>'MemberController@loginPage']);
@@ -21,9 +21,10 @@ Route::any('loginPage',['uses'=>'MemberController@loginPage']);
 //登録ページ
 Route::any('registerPage',['uses'=>'MemberController@registerPage']);
 
-//登録チェック、エラーメッセージ
+//登録、ログイン、エラーメッセージ
 Route::group(['middleware'=>['web']],function(){
 	Route::any('registerDao',['uses'=>'MemberController@registerDao']);
+	Route::any('loginDao',['uses'=>'MemberController@loginDao']);
 });
 
 
