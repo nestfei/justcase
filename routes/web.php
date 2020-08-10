@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-})->name('mywelcome');
+})->name('mywelcome');*/
+Route::any('/',['uses'=>'HomeController@homePage'])->name('home');
 
 //ログインページ
 Route::any('loginPage',['uses'=>'MemberController@loginPage']);
@@ -30,6 +31,10 @@ Route::group(['middleware'=>['web']],function(){
 //ホームページ
 Route::any('homePage',['uses'=>'HomeController@homePage'])->name('home');
 
+//ログイン判断　お気に入り、カート用
+/*Route::group(['middleware'=>['autologin']],function(){
+	お気に入り、カートのルーター
+});*/
 
 
 

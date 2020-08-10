@@ -7,7 +7,11 @@
 <body>
 <div>
 <!--header-->
-<!--@include('common.header')-->
+@if(isset($_COOKIE['lastname_cookie']))
+	@include('common.header_1')
+@else
+	@include('common.header_0')
+@endif
 
 <!--main contents-->
 @yield('contents')

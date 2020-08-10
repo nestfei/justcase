@@ -5,7 +5,6 @@
 @section('lastname',$lastname)
 <!--{{--@section('uid',$uid)--}}-->
 
-@include('common.header')
 
 @section('contents')
 
