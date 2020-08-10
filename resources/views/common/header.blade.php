@@ -1,0 +1,1 @@
+ようこそ<a href="#">@yield('lastname','ゲストさん')さん</a>

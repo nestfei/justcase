@@ -27,6 +27,8 @@ Route::group(['middleware'=>['web']],function(){
 	Route::any('loginDao',['uses'=>'MemberController@loginDao']);
 });
 
+//ホームページ
+Route::any('homePage',['uses'=>'HomeController@homePage'])->name('home');
 
 
 

@@ -27,5 +27,12 @@ class AppServiceProvider extends ServiceProvider
 			\Validator::extend('phone',function($attribute,$value,$parameters,Validator $validator){
 					return $validator->validateRegex($attribute,$value,['/^(0{1}\d{9,10})$/']);
 				});
+			
+			/*gobal cookie*/
+			/*$view->with('変数名',\request()->cookie('cookie名'));*/
+			view()->composer('*',function($view){
+				$view->with('lastname',\request()->cookie('lastname_cookie'));
+				/*$view->with('uid',\request()->cookie('uid_cookie'));*/
+			});
     }
 }

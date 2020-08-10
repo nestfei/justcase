@@ -87,17 +87,14 @@ class MemberController extends Controller
 				$auth_cookie=\Cookie('auth_cookie',$auth,40320);
 				$uid_cookie=\Cookie('uid_cookie',$uid,40320);
 				$lastname_cookie=\Cookie('lastname_cookie',$lastname,40320);
-				return \response()->redirectToRoute('mywelcome')->cookie($auth_cookie)->cookie($uid_cookie)->cookie($lastname_cookie);
+				return \response()->redirectToRoute('home')->cookie($auth_cookie)->cookie($uid_cookie)->cookie($lastname_cookie);
 			}else{
 				$uid_cookie=\Cookie('uid_cookie',$uid);
 				$lastname_cookie=\Cookie('lastname_cookie',$lastname);
-				return \response()->redirectToRoute('mywelcome')->cookie($uid_cookie)->cookie($lastname_cookie);
+				return \response()->redirectToRoute('home')->cookie($uid_cookie)->cookie($lastname_cookie);
 			}
 		}else{
-			exit("<script>
-					alert('メールアドレスまたはパスワードは正しくありません');
-					location.href='loginPage';
-				</script>");
+			return redirect('loginPage')->with('login_error','メールアドレスまたはパスワードは正しくありません')->withinput();
 		}		
 	}
 
