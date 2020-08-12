@@ -18,11 +18,24 @@ class MemberController extends Controller
 	
 	//登録ページ
 	public function registerPage(){
-		return view('register');
+		return view('register',['email'=>'',
+														'last'=>'',
+														'firstname'=>'',
+														'lastname_huri'=>'',
+														'firstname_huri'=>'']);
 	}
-		
-	//登録、エラーメッセージ
-	public function registerDao(Request $request){
+	
+	public function registerPageBack(Request $request){
+		$data=$request->input('Member');
+		return view('register',['email'=>$data['email'],
+														'last'=>$data['lastname'],
+														'firstname'=>$data['firstname'],
+														'lastname_huri'=>$data['lastname_huri'],
+														'firstname_huri'=>$data['firstname_huri']]);
+	}
+	
+	//登録確認ページ、エラーメッセージ
+	public function registerConfirm(Request $request){
 		//入力チェック
 		$request->validate([
 			'Member.email'=>'required|email',
@@ -45,7 +58,6 @@ class MemberController extends Controller
 			'Member.password'=>'パスワード',
 			'comfirmpwd'=>'パスワード（再入力）'
 		]);
-		
 		//データを受け取る。Memberは配列
 		$data=$request->input('Member');
 		//メールアドレス重複チェック
@@ -53,16 +65,28 @@ class MemberController extends Controller
 		if(isset($repeat_check)){
 			return redirect('registerPage')->with('email_existed','登録済のメールアドレスです')->withinput();
 		}else{
-			//members表に書き込む
-			$salt='just';
-			$md5pwd=md5($data['password'].$salt);
-			$data['password']=$md5pwd;
-			Member::create($data);
-			exit("<script>
-				alert('登録完了\\nありがとうございました');
-				location.href='loginPage';
-			</script>");
+			return view('regist_comfirm',['email'=>$data['email'],
+																		'last'=>$data['lastname'],
+																		'firstname'=>$data['firstname'],
+																		'lastname_huri'=>$data['lastname_huri'],
+																		'firstname_huri'=>$data['firstname_huri'],
+																		'password'=>$data['password']]);
 		}
+	}
+		
+	//登録
+	public function registerDao(Request $request){
+		//データを受け取る。Memberは配列
+		$data=$request->input('Member');
+		//members表に書き込む
+		$salt='just';
+		$md5pwd=md5($data['password'].$salt);
+		$data['password']=$md5pwd;
+		Member::create($data);
+		exit("<script>
+			alert('登録完了\\nありがとうございました');
+			location.href='loginPage';
+		</script>");	
 	}
 	
 	//ログイン

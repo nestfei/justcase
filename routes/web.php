@@ -21,6 +21,10 @@ Route::any('loginPage',['uses'=>'MemberController@loginPage']);
 
 //登録ページ
 Route::any('registerPage',['uses'=>'MemberController@registerPage']);
+Route::any('registerPageBack',['uses'=>'MemberController@registerPageBack']);
+
+//登録確認ページ
+Route::any('registerConfirm',['uses'=>'MemberController@registerConfirm']);
 
 //登録、ログイン、エラーメッセージ
 Route::group(['middleware'=>['web']],function(){
