@@ -18,6 +18,9 @@
 @else
 	@include('common.header_0')
 @endif
+	
+<!--カテゴリー-->
+@include('common.category')
 
 <!--main contents-->
 @yield('contents')

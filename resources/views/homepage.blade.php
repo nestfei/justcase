@@ -18,6 +18,12 @@
 	<img src="{{asset($value->previewfile)}}">
 	{{$value->name}}
 	{{$value->price}}
+	<?php
+	$descateIdArr=explode(",",$value->descategory_ids);
+	foreach($descateIdArr as $descateId){
+		echo $descateArray[$descateId-1]." ";
+	}
+	?>
 </div>
 @endforeach
 

@@ -35,7 +35,7 @@ Route::group(['middleware'=>['web']],function(){
 //ホームページ
 Route::any('homePage',['uses'=>'HomeController@homePage'])->name('home');
 
-Route::any('allProducts',['uses'=>'HomeController@allProducts']);
+Route::any('descateArray',['uses'=>'HomeController@descateArray']);
 
 
 //ログイン判断　お気に入り、カート用

@@ -46,4 +46,5 @@ class HomeController extends Controller
 			$productsInfo=DB::table('products as p')->leftJoin('procategory as c','p.procategory_id','=','c.id')->select('p.*','c.name as catename')->get();
 			return $productsInfo;
 		}
+	
 }
