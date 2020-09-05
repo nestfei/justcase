@@ -35,6 +35,9 @@ Route::group(['middleware'=>['web']],function(){
 //ホームページ
 Route::any('homePage',['uses'=>'HomeController@homePage'])->name('home');
 
+Route::any('allProducts',['uses'=>'HomeController@allProducts']);
+
+
 //ログイン判断　お気に入り、カート用
 /*Route::group(['middleware'=>['autologin']],function(){
 	お気に入り、カートのルーター
