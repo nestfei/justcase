@@ -1,15 +1,15 @@
 <!--デザインカテゴリー-->
-@foreach($descateArray as $value)
-	{{$value}}
+@foreach($descateIdArray as $value)
+	<a href="#">{{$descateNameArray[$value]}}</a>
 @endforeach
 <br>
 <!--機種カテゴリー-->
-@foreach($CateArray as $parent=>$value)
+@foreach($cateIdArray as $parent=>$value)
 	<!--親機種　例：iPhone-->
-	{{$parent}}<br>
+	<a href="{{url('categoryPage',['cateId'=>$parent])}}">{{$cateNameArray[$parent]}}</a><br>
 	@foreach($value as $son)
 		<!--子機種 例：iPhone8,iPhoneX......-->
-		{{$son}}
+		<a href="{{url('categoryPage',['cateId'=>$son])}}">{{$cateNameArray[$son]}}</a>
 	@endforeach
 <br>
 @endforeach

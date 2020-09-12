@@ -13,15 +13,15 @@
 
 <!--全ての商品-->
 @foreach($productsInfo as $value)
-<div>
+<div><!--商品div-->
 	<!--プレビュー画像-->
 	<img src="{{asset($value->previewfile)}}">
 	{{$value->name}}
 	{{$value->price}}
 	<?php
-	$descateIdArr=explode(",",$value->descategory_ids);
-	foreach($descateIdArr as $descateId){
-		echo $descateArray[$descateId-1]." ";
+	$descateIds=explode(",",$value->descategory_ids);
+	foreach($descateIds as $descateId){
+		echo $descateNameArray[$descateId]." ";
 	}
 	?>
 </div>

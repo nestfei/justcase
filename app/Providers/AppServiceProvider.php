@@ -42,26 +42,30 @@ class AppServiceProvider extends ServiceProvider
 			//gobal phone category date
 				view()->composer('*',function($view){
 					$parentCate=DB::table('procategory')->where('parent_no','=',0)->select('name','category_no')->get();
-					$CateArray=[];
+					$cateIdArray=[];
+					$cateNameArray=[];
 					foreach($parentCate as $value){
-						$cateArray[$value->category_no]=$value->name;//連想配列
+						$cateNameArray[$value->category_no]=$value->name;//親機種名　連想配列
+						$cateIdArray[$value->category_no]=[];//親機種id　連想配列
 					}
-					$subCate=DB::table('procategory')->where('parent_no','<>',0)->select('name','parent_no')->get();
+					$subCate=DB::table('procategory')->where('parent_no','<>',0)->select('name','parent_no','category_no')->get();
 					foreach($subCate as $value){
-						$CateArray[$cateArray[$value->parent_no]][]=$value->name;//二次元連想配列
+						$cateNameArray[$value->category_no]=$value->name;//機種名　連想配列
+						$cateIdArray[$value->parent_no][]=$value->category_no;//機種id 二次元配列
 					}
-					$view->with('CateArray',$CateArray);
+					$view->with('cateNameArray',$cateNameArray)->with('cateIdArray',$cateIdArray);
 				});
 				
-			//gobal design category
+			//gobal design category date
 				view()->composer('*',function($view){
-					$descate=DB::table('descategory')->select('name')->get();
-					$descateArray=[];
+					$descate=DB::table('descategory')->select('name','category_no')->get();
+					$descateIdArray=[];
+					$descateNameArray=[];
 					foreach($descate as $value){
-						$descateArray[]=$value->name;
+						$descateIdArray[]=$value->category_no;//デザインid
+						$descateNameArray[$value->category_no]=$value->name;//デザイン名　連想配列
 					}
-					$view->with('descateArray',$descateArray);
+					$view->with('descateNameArray',$descateNameArray)->with('descateIdArray',$descateIdArray);
 				});
-			
     }
 }

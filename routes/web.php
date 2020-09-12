@@ -37,6 +37,8 @@ Route::any('homePage',['uses'=>'HomeController@homePage'])->name('home');
 
 Route::any('descateArray',['uses'=>'HomeController@descateArray']);
 
+//カテゴリー別ページ
+Route::any('categoryPage/{cateId}',['uses'=>'CategoryController@categoryPage']);
 
 //ログイン判断　お気に入り、カート用
 /*Route::group(['middleware'=>['autologin']],function(){
