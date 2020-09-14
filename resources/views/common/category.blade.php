@@ -1,6 +1,7 @@
 <!--デザインカテゴリー-->
 @foreach($descateIdArray as $value)
-	<a href="#">{{$descateNameArray[$value]}}</a>
+	<a href="{{url('categoryDesPage',['cateNo'=>$value])}}">
+		{{$descateNameArray[$value]}}</a>
 @endforeach
 <br>
 <!--機種カテゴリー-->
