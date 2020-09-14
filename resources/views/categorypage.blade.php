@@ -8,7 +8,7 @@
 @section('contents')
 
 
-<!--全ての商品-->
+<!--商品-->
 @foreach($cateproducts as $value)
 <div><!--商品div-->
 	<!--プレビュー画像-->
@@ -16,10 +16,10 @@
 	{{$value->name}}
 	{{$value->price}}
 	<?php
-	$descateIds=explode(",",$value->descategory_ids);
+	/*$descateIds=explode(",",$value->descategory_ids);
 	foreach($descateIds as $descateId){
 		echo $descateNameArray[$descateId]." ";
-	}
+	}*/
 	?>
 </div>
 @endforeach

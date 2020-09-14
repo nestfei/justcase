@@ -19,10 +19,10 @@
 	{{$value->name}}
 	{{$value->price}}
 	<?php
-	$descateIds=explode(",",$value->descategory_ids);
+	/*$descateIds=explode(",",$value->descategory_ids);
 	foreach($descateIds as $descateId){
 		echo $descateNameArray[$descateId]." ";
-	}
+	}*/
 	?>
 </div>
 @endforeach
