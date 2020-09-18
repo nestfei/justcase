@@ -7,9 +7,14 @@
 
 @section('contents')
 <!--スライドショーの画像-->
-<img src="{{asset($sliderInfo[0][0])}}" alt="">
-<img src="{{asset($sliderInfo[1][0])}}" alt="">
-<img src="{{asset($sliderInfo[2][0])}}" alt="">
+<div>
+	<img src="{{asset($sliderInfo[0][0])}}" alt="">
+	<img src="{{asset($sliderInfo[1][0])}}" alt="">
+	<img src="{{asset($sliderInfo[2][0])}}" alt="">
+</div>
+	
+<!--カテゴリー-->
+@include('common.category')
 
 <!--全ての商品-->
 @foreach($productsInfo as $value)

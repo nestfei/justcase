@@ -12,15 +12,9 @@
 </head>
 <body>
 <div>
+
 <!--header-->
-@if(isset($_COOKIE['lastname_cookie']))
-	@include('common.header_1')
-@else
-	@include('common.header_0')
-@endif
-	
-<!--カテゴリー-->
-@include('common.category')
+@include('common.header')
 
 <!--main contents-->
 @yield('contents')

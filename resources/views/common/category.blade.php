@@ -1,3 +1,5 @@
+<a href="{{url('homePage')}}">全てのケース</a>
+<br>
 <!--デザインカテゴリー-->
 @foreach($descateIdArray as $value)
 	<a href="{{url('categoryDesPage',['cateNo'=>$value])}}">
