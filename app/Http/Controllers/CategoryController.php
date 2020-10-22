@@ -29,7 +29,7 @@ class CategoryController extends Controller
 				$cateId=Procategory::where('category_no','=',$cateNo)->first('id');
 				$cateproducts=Products::where('procategory_id','=',$cateId->id)->get();
 			}
-			return view('categorypage',['cateproducts'=>$cateproducts]);
+			return view('result',['cateproducts'=>$cateproducts]);
 		}
 	
 			//デザインカテゴリー
@@ -37,6 +37,6 @@ class CategoryController extends Controller
 			$cateId=Descategory::where('category_no','=',$cateNo)->first('id');
 			$desId=$cateId->id;
 			$cateproducts=Products::where('descategory_ids','=',$desId)->orwhere('descategory_ids','like',$desId.',%')->orwhere('descategory_ids','like','%,'.$desId.',%')->orwhere('descategory_ids','like','%,'.$desId)->get();
-			return view('categorypage',['cateproducts'=>$cateproducts]);
+			return view('result',['cateproducts'=>$cateproducts]);
 		 }
 }

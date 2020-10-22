@@ -6,13 +6,10 @@
 <!--{{--@section('uid',$uid)--}}-->
 
 @section('contents')
-<!--スライドショーの画像-->
-<div>
-	<img src="{{asset($sliderInfo[0][0])}}" alt="">
-	<img src="{{asset($sliderInfo[1][0])}}" alt="">
-	<img src="{{asset($sliderInfo[2][0])}}" alt="">
-</div>
-	
+
+<!--スライドショー-->
+@include('common.slider')
+
 <!--カテゴリー-->
 @include('common.category')
 
@@ -20,15 +17,9 @@
 @foreach($productsInfo as $value)
 <div><!--商品div-->
 	<!--プレビュー画像-->
-	<img src="{{asset($value->previewfile)}}">
-	{{$value->name}}
-	{{$value->price}}
-	<?php
-	/*$descateIds=explode(",",$value->descategory_ids);
-	foreach($descateIds as $descateId){
-		echo $descateNameArray[$descateId]." ";
-	}*/
-	?>
+	<a href="{{url('proDetails',['products_id'=>$value->id])}}"><img src="{{asset($value->previewfile)}}"></a>
+	<a href="{{url('proDetails',['products_id'=>$value->id])}}">{{$value->name}}
+	{{$value->price}}</a>
 </div>
 @endforeach
 

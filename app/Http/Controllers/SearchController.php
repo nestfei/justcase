@@ -17,7 +17,7 @@ class SearchController extends Controller
 				$searchLike[$key]=['name','like','%'.$value.'%'];
 			}
 			$result=Products::where($searchLike)->get();
+			return view('result',['cateproducts'=>$result]);
 			
-			return view('searchPage',['result'=>$result]);
 		}
 }

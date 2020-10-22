@@ -46,6 +46,9 @@ Route::any('categoryDesPage/{cateNo}',['uses'=>'CategoryController@categorDesPag
 //商品検索
 Route::any('searchProducts',['uses'=>'SearchController@searchProducts']);
 
+//商品詳細ページ
+Route::any('proDetails/{products_id}',['uses'=>'DetailsController@proDetails']);
+
 //ログイン判断　お気に入り、カート用
 /*Route::group(['middleware'=>['autologin']],function(){
 	お気に入り、カートのルーター

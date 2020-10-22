@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 /*use App\Models\Procategory;
 use App\Models\Descategory;*/
 use Illuminate\Support\Facades\DB;
+use App\Models\Sliderimg;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -67,5 +68,28 @@ class AppServiceProvider extends ServiceProvider
 					}
 					$view->with('descateNameArray',$descateNameArray)->with('descateIdArray',$descateIdArray);
 				});
+			
+			//gobal slider info
+				view()->composer('*',function($view){
+				//image1
+				$img1=Sliderimg::where('img_no','=',1)->first();
+				$proid_1=$img1['products_id'];//画像の商品のid
+				$imgfile_1=$img1['sliderimgfile'];//画像path
+				//image2
+				$img2=Sliderimg::where('img_no','=',2)->first();
+				$proid_2=$img2['products_id'];//画像の商品のid
+				$imgfile_2=$img2['sliderimgfile'];//画像path
+
+				//mage3
+				$img3=Sliderimg::where('img_no','=',3)->first();
+				$proid_3=$img3['products_id'];//画像の商品のid
+				$imgfile_3=$img3['sliderimgfile'];//画像path
+				$sliderInfo=[
+					[$imgfile_1,$proid_1],
+					[$imgfile_2,$proid_2],
+					[$imgfile_3,$proid_3]
+				];
+				$view->with('sliderInfo',$sliderInfo);
+			});
     }
 }
