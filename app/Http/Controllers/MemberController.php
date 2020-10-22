@@ -22,16 +22,36 @@ class MemberController extends Controller
 														'last'=>'',
 														'firstname'=>'',
 														'lastname_huri'=>'',
-														'firstname_huri'=>'']);
+														'firstname_huri'=>'',
+														'birth_y'=>'',
+														'birth_m'=>'',
+														'birth_d'=>'',
+														'gender'=>'',
+														'post'=>'',
+														'prefecture'=>'',
+														'town'=>'',
+														'address'=>''
+													 ]);
 	}
 	
 	public function registerPageBack(Request $request){
 		$data=$request->input('Member');
+		$birth=$request->input('Birth');
 		return view('register',['email'=>$data['email'],
 														'last'=>$data['lastname'],
 														'firstname'=>$data['firstname'],
 														'lastname_huri'=>$data['lastname_huri'],
-														'firstname_huri'=>$data['firstname_huri']]);
+														'firstname_huri'=>$data['firstname_huri'],
+														'gender'=>$data['gender'],
+														'birth_y'=>$birth['y'],
+														'birth_m'=>$birth['m'],
+														'birth_d'=>$birth['d'],
+														'post'=>$data['post'],
+														'prefecture'=>$data['prefecture'],
+														'town'=>$data['town'],
+														'address'=>$data['address']
+													 
+													 ]);
 	}
 	
 	//登録確認ページ、エラーメッセージ
@@ -43,10 +63,15 @@ class MemberController extends Controller
 			'Member.firstname'=>'required',
 			'Member.lastname_huri'=>'required',
 			'Member.firstname_huri'=>'required',
-			'Member.password'=>'required',
+			'Member.password'=>'required|digits_between:8,20',
+			'Member.post'=>'required|digits:7',
+			'Member.prefecture'=>'required',
+			'Member.town'=>'required',
 			'comfirmpwd'=>'required|same:Member.password'
 		],[
 			'required'=>':attributeを入力してください',
+			'digits_between'=>':attributeは8文字以上20文字以内で入力してください',
+			'digits'=>'正しい:attributeを入力してください',
 			'same'=>':attributeは一致しません',
 			'email'=>'正しい:attributeを入力してください'
 		],[
@@ -56,21 +81,37 @@ class MemberController extends Controller
 			'Member.lastname_huri'=>'姓（フリガナ）',
 			'Member.firstname_huri'=>'名（フリガナ）',
 			'Member.password'=>'パスワード',
+			'Member.post'=>'郵便番号',
+			'Member.prefecture'=>'都道府県',
+			'Member.town'=>'市町村',
 			'comfirmpwd'=>'パスワード（再入力）'
 		]);
 		//データを受け取る。Memberは配列
 		$data=$request->input('Member');
+		$birth=$request->input('Birth');
 		//メールアドレス重複チェック
 		$repeat_check=Member::where('email','=',$data['email'])->first();
 		if(isset($repeat_check)){
 			return redirect('registerPage')->with('email_existed','登録済のメールアドレスです')->withinput();
 		}else{
+			$birth_str=$birth['y']."-".$birth['m']."-".$birth['d'];
+			$gender_arr=['男','女','その他'];
 			return view('regist_comfirm',['email'=>$data['email'],
 																		'last'=>$data['lastname'],
 																		'firstname'=>$data['firstname'],
 																		'lastname_huri'=>$data['lastname_huri'],
 																		'firstname_huri'=>$data['firstname_huri'],
-																		'password'=>$data['password']]);
+																		'password'=>$data['password'],
+																		'gender'=>$data['gender'],
+																		'gender_arr'=>$gender_arr,
+																		'birth_y'=>$birth['y'],
+																		'birth_m'=>$birth['m'],
+																		'birth_d'=>$birth['d'],
+																		'birth_str'=>$birth_str,
+																		'post'=>$data['post'],
+																		'prefecture'=>$data['prefecture'],
+																		'town'=>$data['town'],
+																		'address'=>$data['address']]);
 		}
 	}
 		
@@ -78,6 +119,7 @@ class MemberController extends Controller
 	public function registerDao(Request $request){
 		//データを受け取る。Memberは配列
 		$data=$request->input('Member');
+		$data['birth']=$request->input('Birth');
 		//members表に書き込む
 		$salt='just';
 		$md5pwd=md5($data['password'].$salt);
