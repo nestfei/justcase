@@ -6,7 +6,7 @@
 	<!--一時的なstyle-->
 	<style>
 		img{
-			height: 100px;
+			height: 150px;
 		}
 	</style>
 </head>
