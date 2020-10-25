@@ -165,13 +165,4 @@ class MemberController extends Controller
 	}
 
 	
-	
-	//memo 
-	/*public function registerAdd(Request $request){
-		$request->validate([
-			'Add.phone'=>'required|phone',
-			
-		]);
-	}*/
-	
 }

@@ -49,9 +49,15 @@ Route::any('searchProducts',['uses'=>'SearchController@searchProducts']);
 //商品詳細ページ
 Route::any('proDetails/{products_id}',['uses'=>'DetailsController@proDetails']);
 
+//お気に入りに追加する
+Route::any('addWish',['uses'=>'WishController@addWish']);
+
+//お気に入りから削除する
+Route::any('removeWish',['uses'=>'WishController@removeWish']);
+
 //ログイン判断　お気に入り、カート用
 /*Route::group(['middleware'=>['autologin']],function(){
-	お気に入り、カートのルーター
+	//お気に入り、カートのルーター
 });*/
 
 

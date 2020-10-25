@@ -29,10 +29,65 @@
 	{{$descateNameArray[$value]}}</a>
 	@endforeach
 	<!--在庫-->
-	在庫：{{$productInfo[0]->store}}<br>
+	在庫：{{$productInfo[0]->store}}
+	<button class='wish'>{{$button}}</button>
+	<br>
 	この商品に似てるやつ
 	@foreach($similar as $value)
 	<a href="{{url('proDetails',['products_id'=>$value->id])}}">
 	<img src="{{asset($value->previewfile)}}"></a>
 	@endforeach
+
+<!--お気に入りに追加ajax-->
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript">
+				var btnText=$('.wish').text();
+        $('.wish').on("click",function () {
+            var pid = {{$productInfo[0]->id}};
+						if(btnText=="お気に入り"){
+								$.ajax({
+									type:'POST',
+									url:'{{url('addWish')}}',
+									data:{pid:pid,_token:"{{csrf_token()}}"},
+									dataType:'json',
+									success:function (data) {
+											if(data.status==0){
+													$('.wish').text(data.msg);
+													btnText=$('.wish').text()
+											}
+											if(data.status==1){
+													alert(data.msg);
+											}
+									},
+									error:function (xhr,status,error) {
+											console.log(xhr);
+											console.log(status);
+											console.log(error);
+									}
+							});
+						}else{
+							$.ajax({
+									type:'POST',
+									url:'{{url('removeWish')}}',
+									data:{pid:pid,_token:"{{csrf_token()}}"},
+									dataType:'json',
+									success:function (data) {
+											if(data.status==0){
+													$('.wish').text(data.msg);
+													btnText=$('.wish').text()
+											}
+											if(data.status==1){
+													alert(data.msg);
+											}
+									},
+									error:function (xhr,status,error) {
+											console.log(xhr);
+											console.log(status);
+											console.log(error);
+									}
+							});
+						}
+        });
+		</script>
+
 @endsection

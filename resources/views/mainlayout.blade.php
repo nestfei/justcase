@@ -8,6 +8,9 @@
 		img{
 			height: 150px;
 		}
+		.search{
+			display: inline;
+		}
 	</style>
 </head>
 <body>
