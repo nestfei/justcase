@@ -3,7 +3,6 @@
 @section('title','商品詳細ページ')
 
 @section('lastname',$lastname)
-<!--{{--@section('uid',$uid)--}}-->
 
 @section('contents')
 
@@ -30,16 +29,20 @@
 	@endforeach
 	<!--在庫-->
 	在庫：{{$productInfo[0]->store}}
+	<!--お気に入りボタン-->
 	<button class='wish'>{{$button}}</button>
 	<br>
+	<!--おすすめ-->
 	この商品に似てるやつ
 	@foreach($similar as $value)
 	<a href="{{url('proDetails',['products_id'=>$value->id])}}">
 	<img src="{{asset($value->previewfile)}}"></a>
 	@endforeach
+@endsection
 
-<!--お気に入りに追加ajax-->
-		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+@section('js')
+	@parent
+<!--お気に入りに追加するajax-->
     <script type="text/javascript">
 				var btnText=$('.wish').text();
         $('.wish').on("click",function () {
@@ -47,7 +50,7 @@
 						if(btnText=="お気に入り"){
 								$.ajax({
 									type:'POST',
-									url:'{{url('addWish')}}',
+									url:'{{url('addWish')}}',/*追加*/
 									data:{pid:pid,_token:"{{csrf_token()}}"},
 									dataType:'json',
 									success:function (data) {
@@ -68,7 +71,7 @@
 						}else{
 							$.ajax({
 									type:'POST',
-									url:'{{url('removeWish')}}',
+									url:'{{url('removeWish')}}',/*削除*/
 									data:{pid:pid,_token:"{{csrf_token()}}"},
 									dataType:'json',
 									success:function (data) {
@@ -89,5 +92,4 @@
 						}
         });
 		</script>
-
 @endsection

@@ -55,6 +55,9 @@ Route::any('addWish',['uses'=>'WishController@addWish']);
 //お気に入りから削除する
 Route::any('removeWish',['uses'=>'WishController@removeWish']);
 
+//お気に入りリストページ
+Route::any('wishPage',['uses'=>'WishController@wishpage']);
+
 //ログイン判断　お気に入り、カート用
 /*Route::group(['middleware'=>['autologin']],function(){
 	//お気に入り、カートのルーター

@@ -4,6 +4,8 @@
 	<!--ログイン中-->
 	<!--マイページリンク-->
 	ようこそ<a href="#">@yield('lastname','ゲスト')さん</a>
+	<!--気に入りリンク-->
+	<a href="{{url('wishPage')}}">お気に入り</a>
 @else
 	<!--ログインしていない-->
 	ようこそゲストさん
@@ -16,6 +18,5 @@
 	<input type="text" name="search" value="{{old('search')}}">
 	<input type="submit" value="検索">
 </form>
-<!--気に入りリンク-->
-<a href="#">お気に入り</a>
+
 </div>
