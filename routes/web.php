@@ -35,19 +35,22 @@ Route::group(['middleware'=>['web']],function(){
 //ホームページ
 Route::any('homePage',['uses'=>'HomeController@homePage'])->name('home');
 
-Route::any('descateArray',['uses'=>'HomeController@descateArray']);
+//Route::any('descateArray',['uses'=>'HomeController@descateArray']);
 
-//機種カテゴリー別ページ
+//全ての商品
+Route::any('allProducts',['uses'=>'HomeController@all']);
+
+//機種カテゴリー別商品
 Route::any('categoryPage/{cateNo}',['uses'=>'CategoryController@categoryPage']);
 
-//デザインカテゴリー別ページ
+//デザインカテゴリー別商品
 Route::any('categoryDesPage/{cateNo}',['uses'=>'CategoryController@categorDesPage']);
 
 //商品検索
 Route::any('searchProducts',['uses'=>'SearchController@searchProducts']);
 
 //商品詳細ページ
-Route::any('proDetails/{products_id}',['uses'=>'DetailsController@proDetails']);
+Route::any('proDetails/{productsId}',['uses'=>'DetailsController@proDetails']);
 
 //お気に入りに追加する
 Route::any('addWish',['uses'=>'WishController@addWish']);

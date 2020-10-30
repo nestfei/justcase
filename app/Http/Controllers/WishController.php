@@ -46,6 +46,6 @@ class WishController extends Controller
 					array_push($wishInfos,$item);
 				}
 			}
-			return view('wishPage',['wishInfos'=>$wishInfos]);
+			return view('wishpage',['wishInfos'=>$wishInfos]);
 		}
 }

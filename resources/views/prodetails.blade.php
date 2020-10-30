@@ -42,8 +42,16 @@
 
 @section('js')
 	@parent
-<!--お気に入りに追加するajax-->
     <script type="text/javascript">
+			@if(!isset($_COOKIE['uid_cookie']))
+			/*ログインしていない*/
+					$('.wish').text('♥ログインしてください');
+					$('.wish').on("click",function(){
+						location.href="{{url('loginPage')}}";
+					});
+			@else
+			/*ログインしている*/
+			/*お気に入りに追加するajax*/
 				var btnText=$('.wish').text();
         $('.wish').on("click",function () {
             var pid = {{$productInfo[0]->id}};
@@ -55,7 +63,7 @@
 									dataType:'json',
 									success:function (data) {
 											if(data.status==0){
-													$('.wish').text(data.msg);
+													$('.wish').text(data.msg);/*←お気に入りに追加したあとの状態*/
 													btnText=$('.wish').text()
 											}
 											if(data.status==1){
@@ -76,7 +84,7 @@
 									dataType:'json',
 									success:function (data) {
 											if(data.status==0){
-													$('.wish').text(data.msg);
+													$('.wish').text(data.msg);/*←お気に入りに追加したあとの状態*/
 													btnText=$('.wish').text()
 											}
 											if(data.status==1){
@@ -91,5 +99,6 @@
 							});
 						}
         });
+			@endif
 		</script>
 @endsection
