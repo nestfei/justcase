@@ -59,7 +59,13 @@ Route::any('addWish',['uses'=>'WishController@addWish']);
 Route::any('removeWish',['uses'=>'WishController@removeWish']);
 
 //お気に入りリストページ
-Route::any('wishPage',['uses'=>'WishController@wishpage']);
+Route::any('wishPage',['uses'=>'WishController@wishPage']);
+
+//買い物カートページ
+Route::any('cartPage',['uses'=>'CartController@cartPage']);
+
+//買い物カートに追加
+Route::any('addCart',['uses'=>'CartController@addCart']);
 
 //ログイン判断　お気に入り、カート用
 /*Route::group(['middleware'=>['autologin']],function(){

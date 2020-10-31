@@ -32,11 +32,11 @@ class WishController extends Controller
 			}else{
 				return response()->json(array('status'=>1,'msg'=>'pidが存在んしません'));
 			}
-			return response()->json(array('status'=>0,'msg'=>'お気に入り'));
+			return response()->json(array('status'=>0,'msg'=>'お気に入り追加する'));
 		}
 	
 		/*お気に入りリストページ*/
-		public function wishpage(Request $request){
+		public function wishPage(Request $request){
 			$wishInfos=array();
 			$uid=$request->cookie('uid_cookie');
 			$wish=Wishlist::where('userid','=',$uid)->orderBy('created_at','desc')->get();

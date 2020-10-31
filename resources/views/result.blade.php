@@ -1,6 +1,6 @@
 @extends('mainlayout')
 
-@section('title','カテゴリー')
+@section('title','result')
 
 @section('lastname',$lastname)
 

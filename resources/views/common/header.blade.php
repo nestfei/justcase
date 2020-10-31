@@ -6,6 +6,8 @@
 	ようこそ<a href="#">@yield('lastname','ゲスト')さん</a>
 	<!--気に入りリンク-->
 	<a href="{{url('wishPage')}}">お気に入り</a>
+	<!--買い物カートリンク-->
+	<a href="{{url('cartPage')}}">買い物カート</a>
 @else
 	<!--ログインしていない-->
 	ようこそゲストさん
@@ -15,7 +17,7 @@
 <!--検索欄-->
 <form action="{{url('searchProducts')}}" method="post" class="search">
 	{{csrf_field()}}
-	<input type="text" name="search" value="{{old('search')}}">
+	<input type="text" name="search" value="{{old('search')}}" placeholder="可愛い">
 	<input type="submit" value="検索">
 </form>
 

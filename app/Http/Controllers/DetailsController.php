@@ -25,7 +25,7 @@ class DetailsController extends Controller
 			$uid=$request->cookie('uid_cookie');
 			$pid=$products_id;
 			$wish=Wishlist::where([['userid','=',$uid],['pid','=',$pid]])->first();
-			$button="お気に入り";
+			$button="お気に入り追加する";
 			if($wish){
 				$button="お気に入り追加済";
 			}

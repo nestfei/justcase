@@ -28,9 +28,11 @@
 	{{$descateNameArray[$value]}}</a>
 	@endforeach
 	<!--在庫-->
-	在庫：{{$productInfo[0]->store}}
+	在庫あり{{--$productInfo[0]->store--}}
 	<!--お気に入りボタン-->
 	<button class='wish'>{{$button}}</button>
+	<!--買い物カートボタン-->
+	<button class='cart'>カートに入れる</button>
 	<br>
 	<!--おすすめ-->
 	この商品に似てるやつ
@@ -42,28 +44,27 @@
 
 @section('js')
 	@parent
+		<!--お気に入りajax-->
     <script type="text/javascript">
 			@if(!isset($_COOKIE['uid_cookie']))
-			/*ログインしていない*/
-					$('.wish').text('♥ログインしてください');
-					$('.wish').on("click",function(){
+			/*ログインしていないとログインページにとぶ*/
+					$('.wish').on('click',function(){
 						location.href="{{url('loginPage')}}";
 					});
 			@else
 			/*ログインしている*/
-			/*お気に入りに追加するajax*/
 				var btnText=$('.wish').text();
-        $('.wish').on("click",function () {
+        $('.wish').on('click',function () {
             var pid = {{$productInfo[0]->id}};
-						if(btnText=="お気に入り"){
+						if(btnText=="お気に入り追加する"){/*お気に入りに追加*/
 								$.ajax({
 									type:'POST',
-									url:'{{url('addWish')}}',/*追加*/
+									url:'{{url('addWish')}}',
 									data:{pid:pid,_token:"{{csrf_token()}}"},
 									dataType:'json',
 									success:function (data) {
 											if(data.status==0){
-													$('.wish').text(data.msg);/*←お気に入りに追加したあとの状態*/
+													$('.wish').text(data.msg);/*←お気に入りに追加した後の状態*/
 													btnText=$('.wish').text()
 											}
 											if(data.status==1){
@@ -76,15 +77,15 @@
 											console.log(error);
 									}
 							});
-						}else{
+						}else{/*お気に入りから削除*/
 							$.ajax({
 									type:'POST',
-									url:'{{url('removeWish')}}',/*削除*/
+									url:'{{url('removeWish')}}',
 									data:{pid:pid,_token:"{{csrf_token()}}"},
 									dataType:'json',
 									success:function (data) {
 											if(data.status==0){
-													$('.wish').text(data.msg);/*←お気に入りに追加したあとの状態*/
+													$('.wish').text(data.msg);/*←お気に入りに追加した後の状態*/
 													btnText=$('.wish').text()
 											}
 											if(data.status==1){
@@ -98,6 +99,42 @@
 									}
 							});
 						}
+        });
+			@endif
+		</script>
+
+		<!--買い物カートajax-->
+		<script type="text/javascript">
+			@if(!isset($_COOKIE['uid_cookie']))
+			/*ログインしていないとログインページにとぶ*/
+					$('.cart').on('click',function(){
+						location.href="{{url('loginPage')}}";
+					});
+			@else
+			/*ログインしている*/
+			/*買い物カートに追加するajax*/
+        $('.cart').on('click',function () {
+            var pid = {{$productInfo[0]->id}};
+								$.ajax({
+									type:'POST',
+									url:'{{url('addCart')}}',
+									data:{pid:pid,_token:"{{csrf_token()}}"},
+									dataType:'json',
+									success:function (data) {
+											/*if(data.status==0){
+													alert(data.msg);
+											}
+											if(data.status==1){
+													alert(data.msg);
+											}*/
+											alert(data.msg);
+									},
+									error:function (xhr,status,error) {
+											console.log(xhr);
+											console.log(status);
+											console.log(error);
+									}
+							});
         });
 			@endif
 		</script>

@@ -27,6 +27,9 @@ class SearchController extends Controller
     public function searchProducts(Request $request){
 			$search=mb_convert_kana($request->input('search'),'a','UTF-8');
 			$search=str_replace('　',' ',$search);
+			if(empty($search)){
+				$search="可愛い";
+			}
 			$searchArr=explode(' ',$search);
 			$searchLike=[];
 			foreach($searchArr as $key=>$value){

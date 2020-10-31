@@ -1,6 +1,6 @@
 @extends('mainlayout')
 
-@section('title','カテゴリー')
+@section('title','お気に入り')
 
 @section('lastname',$lastname)
 
@@ -18,15 +18,15 @@
 
 @section('js')
 	@parent
-	<!--お気に入りを削除するajax-->
+	<!--お気に入りajax-->
     <script type="text/javascript">
 				var btnText=$('.remove_wish').text();
-        $('.remove_wish').on("click",function () {
+        $('.remove_wish').on('click',function () {
             var id=$(this).attr("id");
-						if(btnText=="お気に入り"){
+						if(btnText=="お気に入り"){/*お気に入りに追加*/
 								$.ajax({
 									type:'POST',
-									url:'{{url('addWish')}}',/*追加*/
+									url:'{{url('addWish')}}',
 									data:{pid:id,_token:"{{csrf_token()}}"},
 									dataType:'json',
 									success:function (data) {
@@ -44,10 +44,10 @@
 											console.log(error);
 									}
 							});
-						}else{
+						}else{/*お気に入りから削除*/
 							$.ajax({
 									type:'POST',
-									url:'{{url('removeWish')}}',/*削除*/
+									url:'{{url('removeWish')}}',
 									data:{pid:id,_token:"{{csrf_token()}}"},
 									dataType:'json',
 									success:function (data) {
