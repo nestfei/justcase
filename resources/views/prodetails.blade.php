@@ -28,7 +28,11 @@
 	{{$descateNameArray[$value]}}</a>
 	@endforeach
 	<!--在庫-->
-	在庫あり{{--$productInfo[0]->store--}}
+	@if($productInfo[0]->store>0)
+	在庫あり
+	@else
+	在庫なし
+	@endif
 	<!--お気に入りボタン-->
 	<button class='wish'>{{$button}}</button>
 	<!--買い物カートボタン-->
@@ -56,7 +60,7 @@
 				var btnText=$('.wish').text();
         $('.wish').on('click',function () {
             var pid = {{$productInfo[0]->id}};
-						if(btnText=="お気に入り追加する"){/*お気に入りに追加*/
+						if(btnText=="お気に入りに追加する"){/*お気に入りに追加*/
 								$.ajax({
 									type:'POST',
 									url:'{{url('addWish')}}',
@@ -64,7 +68,7 @@
 									dataType:'json',
 									success:function (data) {
 											if(data.status==0){
-													$('.wish').text(data.msg);/*←お気に入りに追加した後の状態*/
+													$('.wish').text('お気に入りに追加済');/*←お気に入りに追加した後の状態*/
 													btnText=$('.wish').text()
 											}
 											if(data.status==1){
@@ -85,7 +89,7 @@
 									dataType:'json',
 									success:function (data) {
 											if(data.status==0){
-													$('.wish').text(data.msg);/*←お気に入りに追加した後の状態*/
+													$('.wish').text('お気に入りに追加する');/*←お気に入りに追加した後の状態*/
 													btnText=$('.wish').text()
 											}
 											if(data.status==1){
@@ -121,12 +125,6 @@
 									data:{pid:pid,_token:"{{csrf_token()}}"},
 									dataType:'json',
 									success:function (data) {
-											/*if(data.status==0){
-													alert(data.msg);
-											}
-											if(data.status==1){
-													alert(data.msg);
-											}*/
 											alert(data.msg);
 									},
 									error:function (xhr,status,error) {

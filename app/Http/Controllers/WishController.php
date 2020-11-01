@@ -18,7 +18,7 @@ class WishController extends Controller
 			}else{
 				return response()->json(array('status'=>1,'msg'=>'pidが存在んしません'));
 			}
-			return response()->json(array('status'=>0,'msg'=>'お気に入り追加済'));
+			return response()->json(array('status'=>0,'msg'=>'お気に入りに追加済'));
 		}
 	
 		/*お気に入りから削除*/
@@ -32,10 +32,10 @@ class WishController extends Controller
 			}else{
 				return response()->json(array('status'=>1,'msg'=>'pidが存在んしません'));
 			}
-			return response()->json(array('status'=>0,'msg'=>'お気に入り追加する'));
+			return response()->json(array('status'=>0,'msg'=>'お気に入りから削除済'));
 		}
 	
-		/*お気に入りリストページ*/
+		/*お気に入り一覧*/
 		public function wishPage(Request $request){
 			$wishInfos=array();
 			$uid=$request->cookie('uid_cookie');

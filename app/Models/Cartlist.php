@@ -9,4 +9,8 @@ class Cartlist extends Model
     protected $table='cartlist';
 		protected $primaryKey='id';
 		protected $fillable=['userid','pid'];
+	
+		public function cartInfo(){
+			return $this->hasMany(Products::class,'id','pid');
+		}
 }

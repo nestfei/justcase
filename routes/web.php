@@ -52,20 +52,23 @@ Route::any('searchProducts',['uses'=>'SearchController@searchProducts']);
 //商品詳細ページ
 Route::any('proDetails/{productsId}',['uses'=>'DetailsController@proDetails']);
 
-//お気に入りに追加する
+//お気に入りに追加
 Route::any('addWish',['uses'=>'WishController@addWish']);
 
-//お気に入りから削除する
+//お気に入りから削除
 Route::any('removeWish',['uses'=>'WishController@removeWish']);
 
-//お気に入りリストページ
+//お気に入り一覧
 Route::any('wishPage',['uses'=>'WishController@wishPage']);
 
-//買い物カートページ
+//買い物カート一覧
 Route::any('cartPage',['uses'=>'CartController@cartPage']);
 
 //買い物カートに追加
 Route::any('addCart',['uses'=>'CartController@addCart']);
+
+//買い物カートから削除
+Route::any('removeCart/{pid}',['uses'=>'CartController@removeCart']);
 
 //ログイン判断　お気に入り、カート用
 /*Route::group(['middleware'=>['autologin']],function(){
