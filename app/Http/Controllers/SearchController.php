@@ -26,9 +26,11 @@ class SearchController extends Controller
 		}
     public function searchProducts(Request $request){
 			$search=mb_convert_kana($request->input('search'),'a','UTF-8');
+			$input=$search;
 			$search=str_replace('　',' ',$search);
 			if(empty($search)){
 				$search="可愛い";
+				$input=$search;
 			}
 			$searchArr=explode(' ',$search);
 			$searchLike=[];
@@ -37,7 +39,6 @@ class SearchController extends Controller
 			}
 			$result=Products::where($searchLike)->get();
 			$wish=$this->isWish($result);
-			return view('result',['cateproducts'=>$result,'wish'=>$wish]);
-			
+			return view('result',['cateproducts'=>$result,'wish'=>$wish,'input'=>$input]);
 		}
 }

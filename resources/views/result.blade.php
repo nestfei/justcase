@@ -11,7 +11,9 @@
 
 <!--カテゴリー-->
 @include('common.category')
-
+@if(isset($input))
+	<h1>"{{$input}}"の検索結果</h1>
+@endif
 <!--商品-->
 	@foreach($cateproducts as $value)
 		@include('common.products')
@@ -23,7 +25,7 @@
     <script type="text/javascript">
 			@if(!isset($_COOKIE['uid_cookie']))
 			/*ログインしていない*/
-					$('.wish').on("click",function(){
+					$('.wish').on("click",function() {
 						location.href="{{url('loginPage')}}";
 					});
 			@else
