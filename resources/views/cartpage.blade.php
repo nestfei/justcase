@@ -73,11 +73,15 @@
 				subTotal();
 				total();
 			});
+			//input change
+			$('.text_box').change(function(){
+				subTotal();
+				total();
+			})
 			//小計
 			function subTotal(){
 				var sub=0;
-				$('.cart_product').each(function(){
-					sub=parseInt($(this).find('input[class*=text_box]').val())*parseInt($(this).find('span[class*=price]').text());
+				$('.cart_product').each(function(){sub=parseInt($(this).find('input[class*=text_box]').val())*parseInt($(this).find('span[class*=price]').text());
 					$(this).find('span[class*=sub_total]').html(sub);
 				});
 			}
