@@ -6,7 +6,6 @@
 
 @section('contents')
 
-
 <!--商品詳細情報-->
 	<!--詳細画像-->
 	<img src="{{asset($productInfo[0]->previewfile)}}">

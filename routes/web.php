@@ -35,8 +35,6 @@ Route::group(['middleware'=>['web']],function(){
 //ホームページ
 Route::any('homePage',['uses'=>'HomeController@homePage'])->name('home');
 
-//Route::any('descateArray',['uses'=>'HomeController@descateArray']);
-
 //全ての商品
 Route::any('allProducts',['uses'=>'HomeController@all']);
 
@@ -69,6 +67,13 @@ Route::any('addCart',['uses'=>'CartController@addCart']);
 
 //買い物カートから削除
 Route::any('removeCart/{pid}',['uses'=>'CartController@removeCart']);
+
+/*買い物カートから1件減らす*/
+Route::any('m1Cart',['uses'=>'CartController@m1Cart']);
+
+/*買い物カートのinputから数量変更*/
+Route::any('changeCart',['uses'=>'CartController@changeCart']);
+
 
 //ログイン判断　お気に入り、カート用
 /*Route::group(['middleware'=>['autologin']],function(){

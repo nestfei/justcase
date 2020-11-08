@@ -31,7 +31,9 @@
 		<td>
 		<div id="{{$value->id}}">
 		<!--数量-->
-			<input class="text_box" type="text" name="number" value="1" min="1" max="100">
+			<input class="text_box" type="text" name="number" value="{{$quantity[$value->id]}}">
+			<!--メモ：inputに入力できる数字を1-100の整数に限定するjsは書いていない。
+							フロントエンドさんお願いします_(:3 」∠ )_-->
 			<button class="btn_up">+</button>
 			<button class="btn_down">-</button>
 		</div>
@@ -43,6 +45,7 @@
 		<td>
 		<!--カートから削除ボタン-->
 		<a href="{{url('removeCart',['pid'=>$value->id])}}"><button class='remove_cart'>削除</button></a>
+			<a href="{{url('m1Cart',['pid'=>$value->id])}}">test-1</a>
 		</td>
 	</tr>
 @endforeach
@@ -56,27 +59,80 @@
 		$(function(){
 			//数量+
 			$('.btn_up').click(function(){
+				var id=$(this).parent()[0].id;
 				var num=$(this).parent().find('input[class*=text_box]');
 				num.val(parseInt(num.val())+1);
 				subTotal();
 				total();
+				if(parseInt(num.val())<100){
+					$.ajax({
+							type:'POST',
+							url:'{{url('addCart')}}',
+							data:{pid:id,_token:"{{csrf_token()}}"},
+							dataType:'json',
+							success:function (data) {
+
+							},
+							error:function (xhr,status,error) {
+									console.log(xhr);
+									console.log(status);
+									console.log(error);
+							}
+					});
+				}
 			});
 			//数量-
 			$('.btn_down').click(function(){
+				var id=$(this).parent()[0].id;
 				var num=$(this).parent().find('input[class*=text_box]');
 				num.val(parseInt(num.val())-1);
 				if(parseInt(num.val())<1){
 					num.val(1);
 					subTotal();
 					total();
+				}else{
+					$.ajax({
+						type:'POST',
+						url:'{{url('m1Cart')}}',
+						data:{pid:id,_token:"{{csrf_token()}}"},
+						dataType:'json',
+						success:function (data) {
+								
+						},
+						error:function (xhr,status,error) {
+								console.log(xhr);
+								console.log(status);
+								console.log(error);
+						}
+					});
 				}
 				subTotal();
 				total();
+				
 			});
 			//input change
 			$('.text_box').change(function(){
 				subTotal();
 				total();
+				var quantity=$(this).parent().find('input[class=text_box]').val();
+				if(quantity>=1 && quantity<=100){
+					var id=$(this).parent()[0].id;
+					
+					$.ajax({
+							type:'POST',
+							url:'{{url('changeCart')}}',
+							data:{pid:id,quantity:quantity,_token:"{{csrf_token()}}"},
+							dataType:'json',
+							success:function (data) {
+
+							},
+							error:function (xhr,status,error) {
+									console.log(xhr);
+									console.log(status);
+									console.log(error);
+							}
+					});
+				}
 			})
 			//小計
 			function subTotal(){

@@ -12,7 +12,6 @@
 
 <!--カテゴリー-->
 @include('common.category')
-
 <!--全ての商品-->
 @foreach($productsInfo as $value)
 	@include('common.products')
