@@ -1,4 +1,3 @@
-<a href="{{url('allProducts')}}">全てのケース</a>
 <br>
 <!--デザインカテゴリー-->
 @foreach($descateIdArray as $value)

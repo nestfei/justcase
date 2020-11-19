@@ -6,6 +6,25 @@
 
 @section('contents')
 
+<!--パンくず-->
+<a href="{{url('homePage')}}">TOP</a>
+><!--親機種-->
+@foreach($cateIdArray as $key=>$parent)
+	@foreach($parent as $son)
+		@if($son==$proCate[0]->category_no)
+			<a href="{{url('categoryPage',['cateNo'=>$key])}}">
+				{{$cateNameArray[$key]}}</a>
+		@break
+		@endif
+	@endforeach
+@endforeach
+><!--機種-->
+<a href="{{url('categoryPage',['cateNo'=>$proCate[0]->category_no])}}">
+{{$proCate[0]->name}}</a>
+><!--商品名-->
+{{$productInfo[0]->name}}
+<br>
+
 <!--商品詳細情報-->
 	<!--詳細画像-->
 	<img src="{{asset($productInfo[0]->previewfile)}}">

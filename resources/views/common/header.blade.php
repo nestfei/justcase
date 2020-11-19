@@ -1,10 +1,11 @@
 <div>
 <a href="{{url('homePage')}}">JUST CASE</a>
+<a href="#">商品一覧</a>
 @if(isset($_COOKIE['lastname_cookie']))
 	<!--ログイン中-->
 	<!--マイページリンク-->
 	ようこそ<a href="#">@yield('lastname','ゲスト')さん</a>
-	<!--気に入りリンク-->
+	<!--お気に入りリンク-->
 	<a href="{{url('wishPage')}}">お気に入り</a>
 	<!--買い物カートリンク-->
 	<a href="{{url('cartPage')}}">買い物カート</a>

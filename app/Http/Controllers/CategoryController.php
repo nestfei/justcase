@@ -46,7 +46,7 @@ class CategoryController extends Controller
 				$cateproducts=Products::where('procategory_id','=',$cateId->id)->get();
 			}
 			$wish=$this->isWish($cateproducts);
-			return view('result',['cateproducts'=>$cateproducts,'wish'=>$wish]);
+			return view('result',['cateproducts'=>$cateproducts,'wish'=>$wish,'cateNo'=>$cateNo]);
 		}
 	
 			//デザインカテゴリー
@@ -55,6 +55,6 @@ class CategoryController extends Controller
 			$desId=$cateId->id;
 			$cateproducts=Products::where('descategory_ids','=',$desId)->orwhere('descategory_ids','like',$desId.',%')->orwhere('descategory_ids','like','%,'.$desId.',%')->orwhere('descategory_ids','like','%,'.$desId)->get();
 			$wish=$this->isWish($cateproducts);
-			return view('result',['cateproducts'=>$cateproducts,'wish'=>$wish]);
+			return view('result',['cateproducts'=>$cateproducts,'wish'=>$wish,'desCateNo'=>$cateNo]);
 		 }
 }

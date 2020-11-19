@@ -7,13 +7,41 @@
 @section('contents')
 
 <!--スライドショー-->
-@include('common.slider')
+<!--{{--@include('common.slider')--}}-->
 
 <!--カテゴリー-->
-@include('common.category')
+<!--{{--@include('common.category')--}}-->
+
+<!--パンくず-->
+<a href="{{url('homePage')}}">TOP</a>
+>
+@if(isset($cateNo))
+	<!--親機種-->
+	@foreach($cateIdArray as $key=>$parent)
+		@foreach($parent as $son)
+			@if($son==$cateNo)
+				<a href="{{url('categoryPage',['cateNo'=>$key])}}">
+					{{$cateNameArray[$key]}}</a>
+					>
+			@break
+			@endif
+		@endforeach
+	@endforeach
+	<!--機種-->
+	{{$cateNameArray[$cateNo]}}
+@elseif(isset($desCateNo))
+	<!--デザイン-->
+	{{$descateNameArray[$desCateNo]}}
+@elseif(isset($input))
+	<!--検査した言葉-->
+	"{{$input}}"の検索結果
+@endif
+
+<!--検索した言葉-->
 @if(isset($input))
 	<h1>"{{$input}}"の検索結果</h1>
 @endif
+
 <!--商品-->
 	@foreach($cateproducts as $value)
 		@include('common.products')
