@@ -12,6 +12,7 @@
 	都道府県 {{$prefecture}}<br>
 	市町村 {{$town}}<br>
 	以降の住所 {{$address}}<br>
+	電話番号 {{$phone}}<br>
 	
 	<form method="post" action="{{url('registerPageBack')}}">
 			{{csrf_field()}}
@@ -28,6 +29,7 @@
 			<input type="hidden" name="Member[prefecture]" value="{{$prefecture}}">
 			<input type="hidden" name="Member[town]" value="{{$town}}">
 			<input type="hidden" name="Member[address]" value="{{$address}}">
+			<input type="hidden" name="Member[phone]" value="{{$phone}}">
 			<input type="submit" value="戻る">
 	</form>
 	<form method="post" action="{{url('registerDao')}}">
@@ -44,6 +46,7 @@
 			<input type="hidden" name="Member[prefecture]" value="{{$prefecture}}">
 			<input type="hidden" name="Member[town]" value="{{$town}}">
 			<input type="hidden" name="Member[address]" value="{{$address}}">
+			<input type="hidden" name="Member[phone]" value="{{$phone}}">
 			<input type="submit" value="登録">
 	</form>
 @endsection

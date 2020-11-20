@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Models\Descategory;*/
 use Illuminate\Support\Facades\DB;
 use App\Models\Sliderimg;
+use Illuminate\Validation\Validator;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -85,5 +86,10 @@ class AppServiceProvider extends ServiceProvider
 				];
 				$view->with('sliderInfo',$sliderInfo);
 			});
-    }
+			
+			//ユーザー定義正規表現
+			\Validator::extend('phone',function ($attribute,$value,$parameters,Validator $validator){
+				return $validator->validateRegex($attribute,$value,['/^(0{1}\d{9,10})$/']);
+			});
+		}
 }

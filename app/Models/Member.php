@@ -8,5 +8,5 @@ class Member extends Model
 {
     protected $table='members';//テーブル名
 		protected $primaryKey='id';
-		protected $fillable=['lastname','firstname','lastname_huri','firstname_huri','password','email','birth','gender','post','prefecture','town','address'];
+		protected $fillable=['lastname','firstname','lastname_huri','firstname_huri','password','email','birth','gender','post','prefecture','town','address','phone'];
 }

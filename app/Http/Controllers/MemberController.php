@@ -30,7 +30,8 @@ class MemberController extends Controller
 														'post'=>'',
 														'prefecture'=>'',
 														'town'=>'',
-														'address'=>''
+														'address'=>'',
+														'phone'=>''
 													 ]);
 	}
 	
@@ -49,8 +50,8 @@ class MemberController extends Controller
 														'post'=>$data['post'],
 														'prefecture'=>$data['prefecture'],
 														'town'=>$data['town'],
-														'address'=>$data['address']
-													 
+														'address'=>$data['address'],
+														'phone'=>$data['phone']
 													 ]);
 	}
 	
@@ -67,13 +68,15 @@ class MemberController extends Controller
 			'Member.post'=>'required|digits:7',
 			'Member.prefecture'=>'required',
 			'Member.town'=>'required',
+			'Member.phone'=>'required|phone',
 			'comfirmpwd'=>'required|same:Member.password'
 		],[
 			'required'=>':attributeを入力してください',
 			'digits_between'=>':attributeは8文字以上20文字以内で入力してください',
 			'digits'=>'正しい:attributeを入力してください',
 			'same'=>':attributeは一致しません',
-			'email'=>'正しい:attributeを入力してください'
+			'email'=>'正しい:attributeを入力してください',
+			'phone'=>'正しい:attributeを入力してください'
 		],[
 			'Member.email'=>'メールアドレス',
 			'Member.lastname'=>'姓',
@@ -84,6 +87,7 @@ class MemberController extends Controller
 			'Member.post'=>'郵便番号',
 			'Member.prefecture'=>'都道府県',
 			'Member.town'=>'市町村',
+			'Member.phone'=>'電話番号',
 			'comfirmpwd'=>'パスワード（再入力）'
 		]);
 		//データを受け取る。Memberは配列
@@ -111,7 +115,8 @@ class MemberController extends Controller
 																		'post'=>$data['post'],
 																		'prefecture'=>$data['prefecture'],
 																		'town'=>$data['town'],
-																		'address'=>$data['address']]);
+																		'address'=>$data['address'],
+																		'phone'=>$data['phone']]);
 		}
 	}
 		

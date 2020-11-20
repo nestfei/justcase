@@ -42,6 +42,7 @@
 			住所<input type="text" name="Member[prefecture]" placeholder="都道府県" value="{{old('Member.prefecture')}}{{$prefecture}}">
 			<input type="text" name="Member[town]" placeholder="市町村" value="{{old('Member.town')}}{{$town}}">
 			<input type="text" name="Member[address]" placeholder="以降の住所" value="{{old('Member.address')}}{{$address}}"><br>
+			電話番号<input type="text" name="Member[phone]" value="{{old('Member.phone')}}{{$phone}}"><br>
 			<input type="submit" value="登録">
 	</form>
 	<script>

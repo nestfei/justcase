@@ -45,13 +45,14 @@
 		<td>
 		<!--カートから削除ボタン-->
 		<a href="{{url('removeCart',['pid'=>$value->id])}}"><button class='remove_cart'>削除</button></a>
-			<a href="{{url('m1Cart',['pid'=>$value->id])}}">test-1</a>
 		</td>
 	</tr>
 @endforeach
 </table>
 <!--合計-->
-合計<span class="total"></span>
+合計<span class="total"></span><br>
+<a href="{{url('orderPage')}}">レジに進む</a><br>
+<a href="{{url('homePage')}}">買い物をつづける</a>
 
 @section('js')
 	@parent
@@ -147,7 +148,7 @@
 				$('.cart_product').each(function(){
 					sum+=parseInt($(this).find('input[class*=text_box]').val())*parseInt($(this).find('span[class*=price]').text());
 				})
-				$('.total').html(sum);
+				$('.total').html("¥"+sum);
 			}
 			subTotal();
 			total();

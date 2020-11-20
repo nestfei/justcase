@@ -74,6 +74,12 @@ Route::any('m1Cart',['uses'=>'CartController@m1Cart']);
 /*買い物カートのinputから数量変更*/
 Route::any('changeCart',['uses'=>'CartController@changeCart']);
 
+//注文内容確認ページ
+Route::any('orderPage',['uses'=>'CartController@orderPage']);
+
+//注文
+Route::any('ordered',['uses'=>'OrderController@order']);
+
 
 //ログイン判断　お気に入り、カート用
 /*Route::group(['middleware'=>['autologin']],function(){
