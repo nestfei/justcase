@@ -4,11 +4,10 @@
 @if(isset($_COOKIE['lastname_cookie']))
 	<!--ログイン中-->
 	<!--マイページリンク-->
-	ようこそ<a href="#">@yield('lastname','ゲスト')さん</a>
+	ようこそ<a href="{{url('myPage')}}">@yield('lastname','ゲスト')さん</a>
 	<!--お気に入りリンク-->
 	<a href="{{url('wishPage')}}">お気に入り</a>
 	<!--買い物カートリンク-->
-	<!--<a href="{{url('cartPage',['to_confirm'=>'false'])}}">買い物カート</a>-->
 	<a href="{{url('cartPage')}}">買い物カート</a>
 @else
 	<!--ログインしていない-->

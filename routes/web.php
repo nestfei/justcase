@@ -32,6 +32,9 @@ Route::group(['middleware'=>['web']],function(){
 	Route::any('loginDao',['uses'=>'MemberController@loginDao']);
 });
 
+//マイページ
+Route::any('myPage',['uses'=>'OrderController@readOrder']);
+
 //ホームページ
 Route::any('homePage',['uses'=>'HomeController@homePage'])->name('home');
 
@@ -77,8 +80,11 @@ Route::any('changeCart',['uses'=>'CartController@changeCart']);
 //注文内容確認ページ
 Route::any('orderPage',['uses'=>'CartController@orderPage']);
 
-//注文
+//注文する
 Route::any('ordered',['uses'=>'OrderController@order']);
+
+//注文一覧
+/*Route::any('readOrder',['uses'=>'OrderController@readOrder']);*/
 
 
 //ログイン判断　お気に入り、カート用

@@ -168,6 +168,11 @@ class MemberController extends Controller
 			return redirect('loginPage')->with('login_error','メールアドレスまたはパスワードは正しくありません')->withinput();
 		}		
 	}
+	
+	//マイページ
+	public function myPage(){
+		return view('mypage');
+	}
 
 	
 }
