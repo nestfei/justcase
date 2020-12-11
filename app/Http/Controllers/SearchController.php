@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\Descategory;
+use App\Models\Procategory;
 use App\Models\Wishlist;
 use Illuminate\Support\Facades\Cookie;
 
@@ -24,6 +25,7 @@ class SearchController extends Controller
 			}
 			return $wish;
 		}
+	
     public function searchProducts(Request $request){
 			$search=mb_convert_kana($request->input('search'),'a','UTF-8');
 			$input=$search;
@@ -40,5 +42,13 @@ class SearchController extends Controller
 			$result=Products::where($searchLike)->get();
 			$wish=$this->isWish($result);
 			return view('result',['cateproducts'=>$result,'wish'=>$wish,'input'=>$input]);
+		}
+	
+		public function searchCheck(Request $request){
+			$desId=$request->input('desId');
+			$proId=Procategory::where('category_no','=',$request->input('proNo'))->first();
+			$result=Products::where([['descategory_ids','=',$desId],['procategory_id','=',$proId->id]])->orwhere([['descategory_ids','like',$desId.',%'],['procategory_id','=',$proId->id]])->orwhere([['descategory_ids','like','%,'.$desId.',%'],['procategory_id','=',$proId->id]])->orwhere([['descategory_ids','like','%,'.$desId],['procategory_id','=',$proId->id]])->get();
+			$wish=$this->isWish($result);
+			return view('result',['cateproducts'=>$result,'wish'=>$wish]);
 		}
 }

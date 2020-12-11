@@ -50,6 +50,9 @@ Route::any('categoryDesPage/{cateNo}',['uses'=>'CategoryController@categorDesPag
 //商品検索
 Route::any('searchProducts',['uses'=>'SearchController@searchProducts']);
 
+//カテゴリー絞り込み検索
+Route::any('searchCheck',['uses'=>'SearchController@searchCheck']);
+
 //商品詳細ページ
 Route::any('proDetails/{productsId}',['uses'=>'DetailsController@proDetails']);
 
