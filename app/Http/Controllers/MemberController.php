@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Member;
+use Illuminate\Support\Facades\Cookie;
 
 class MemberController extends Controller
 {
@@ -169,9 +170,18 @@ class MemberController extends Controller
 		}		
 	}
 	
-	//マイページ
+	//マイページ 多分使わない
 	public function myPage(){
 		return view('mypage');
+	}
+	
+	//情報変更ページ
+	public function editInfo(){
+		$uid=Cookie::get('uid_cookie');
+		$info=Member::where('id','=',$uid)->first();
+		/*var_dump($info->email);
+		exit;*/
+		return view('edit_info',['info'=>$info]);
 	}
 
 	

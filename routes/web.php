@@ -35,6 +35,9 @@ Route::group(['middleware'=>['web']],function(){
 //マイページ
 Route::any('myPage',['uses'=>'OrderController@readOrder']);
 
+//情報変更ページ
+Route::any('editInfo',['uses'=>'MemberController@editInfo']);
+
 //ホームページ
 Route::any('homePage',['uses'=>'HomeController@homePage'])->name('home');
 
