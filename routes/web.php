@@ -38,6 +38,9 @@ Route::any('myPage',['uses'=>'OrderController@readOrder']);
 //情報変更ページ
 Route::any('editInfo',['uses'=>'MemberController@editInfo']);
 
+//情報変更チェック
+Route::any('editCheck',['uses'=>'MemberController@editCheck']);
+
 //ホームページ
 Route::any('homePage',['uses'=>'HomeController@homePage'])->name('home');
 

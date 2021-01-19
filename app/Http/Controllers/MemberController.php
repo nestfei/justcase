@@ -179,10 +179,69 @@ class MemberController extends Controller
 	public function editInfo(){
 		$uid=Cookie::get('uid_cookie');
 		$info=Member::where('id','=',$uid)->first();
-		/*var_dump($info->email);
-		exit;*/
 		return view('edit_info',['info'=>$info]);
 	}
 
+	//情報変更チェック、エラーメッセージ
+	public function editCheck(Request $request){
+		//入力チェック
+		$request->validate([
+			'Member.email'=>'required|email',
+			'Member.lastname'=>'required',
+			'Member.firstname'=>'required',
+			'Member.lastname_huri'=>'required',
+			'Member.firstname_huri'=>'required',
+			'Member.password'=>'required|digits_between:8,20',
+			'Member.post'=>'required|digits:7',
+			'Member.prefecture'=>'required',
+			'Member.town'=>'required',
+			'Member.phone'=>'required|phone',
+			'comfirmpwd'=>'required|same:Member.password'
+		],[
+			'required'=>':attributeを入力してください',
+			'digits_between'=>':attributeは8文字以上20文字以内で入力してください',
+			'digits'=>'正しい:attributeを入力してください',
+			'same'=>':attributeは一致しません',
+			'email'=>'正しい:attributeを入力してください',
+			'phone'=>'正しい:attributeを入力してください'
+		],[
+			'Member.email'=>'メールアドレス',
+			'Member.lastname'=>'姓',
+			'Member.firstname'=>'名',
+			'Member.lastname_huri'=>'姓（フリガナ）',
+			'Member.firstname_huri'=>'名（フリガナ）',
+			'Member.password'=>'パスワード',
+			'Member.post'=>'郵便番号',
+			'Member.prefecture'=>'都道府県',
+			'Member.town'=>'市町村',
+			'Member.phone'=>'電話番号',
+			'comfirmpwd'=>'パスワード（再入力）'
+		]);
+		//データを受け取る。Memberは配列
+		$data=$request->input('Member');
+		$birth=$request->input('Birth');
+		//メールアドレス重複チェック
+		$repeat_check=Member::where('email','=',$data['email'])->get();
+		if(count($repeat_check)>1){
+			return redirect('editInfo')->with('email_existed','登録済のメールアドレスです')->withinput();
+		}else{
+			$uid=Cookie::get('uid_cookie');
+			$birth=$request->input('Birth');
+			$birth_str=$birth['y']."-".$birth['m']."-".$birth['d'];
+			//データを受け取る。Memberは配列
+			$data=$request->input('Member');
+			$data['birth']=$birth_str;
+			//members表に書き込む
+			$salt='just';
+			$md5pwd=md5($data['password'].$salt);
+			$data['password']=$md5pwd;
+			Member::where('id','=',$uid)->update($data);
+			/*exit;*/
+			exit("<script>
+				alert('変更しました\\nありがとうございました');
+				location.href='editInfo';
+			</script>");	
+		}
+	}
 	
 }

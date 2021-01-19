@@ -5,7 +5,7 @@
 @section('contents')
 	@include('common.validator')
 	{{session('email_existed')}}
-	<form method="post" action="{{url('registerConfirm')}}">
+	<form method="post" action="{{url('editCheck')}}">
 			{{csrf_field()}}
 			メールアドレス<input type="text" name="Member[email]" value="{{$info->email}}"><br>
 			パスワード<input type="password" name="Member[password]"><br>
