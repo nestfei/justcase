@@ -31,24 +31,39 @@ class OrderController extends Controller
 				$price=$product->price;
 				Orddetails::create(['oid'=>$oid,'uid'=>$uid,'products_id'=>$value->pid,'quantity'=>$value->quantity,'price'=>$price]);
 			}
-			//然后删除购物车记录
+			//カートデータを削除
+			Cartlist::where('userid','=',$uid)->delete();
 			
 		}
 	
 	//注文一覧
-	public function readOrder(){
+	public function readOrder(Request $request){
 			$orderInfos=array();
 			$uid=Cookie::get('uid_cookie');
-			$order=Orddetails::where('uid','=',$uid)->orderBy('created_at','desc')->get();
+			//注文時間フィルター
+			$date_filter=-6;
+			if(!empty($request->input('date_filter'))){
+				$date_filter=$request->input('date_filter');
+			}
+			$order_date=date("Y-m-d H:i:s", strtotime($date_filter."month"));
+			
+			//注文詳細
+			$order=Orddetails::where([['uid','=',$uid],['created_at','>',$order_date]])->orderBy('created_at','desc')->get();
 			foreach($order as $value){
 				$orderInfo=Orddetails::find($value->id)->orderInfo;
 				foreach($orderInfo as $item){
 					array_push($orderInfos,$item);
 				}
 			}
-		/*dd($orderInfos);
-		exit;*/
-		return view('mypage',['orderInfos'=>$orderInfos]);
+			
+			//注文状況
+			$state=array();
+			$state_name=['準備中','発送済','お届け済'];
+			foreach($order as $value){
+				$orders=Orders::where('oid','=',$value->oid)->first();
+				$state[]=$state_name[$orders->states_id];
+			}
+		return view('mypage',['orderInfos'=>$orderInfos,'order'=>$order,'state'=>$state,'dateFilter'=>$date_filter]);
 	}
 	
 }

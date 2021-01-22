@@ -46,7 +46,8 @@
 	名前　{{$member->lastname}}　{{$member->firstname}}<br>
 	郵便番号　{{$member->post}}<br>
 	住所　{{$member->prefecture}}　{{$member->town}}　{{$member->address}}<br>
-	電話番号　{{$member->phone}}
+	電話番号　{{$member->phone}}<br>
+	<a href="{{url('editInfo')}}">会員情報を変更</a>
 </div>
 <div>
 	<h2>お支払い方法</h2>

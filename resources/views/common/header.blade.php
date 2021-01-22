@@ -10,7 +10,7 @@
 	<!--買い物カートリンク-->
 	<a href="{{url('cartPage')}}">買い物カート</a>
 @else
-	<!--ログインしていない-->
+	<!--ログインしていない場合-->
 	ようこそゲストさん
 	<a href="{{url('loginPage')}}">ログイン</a>
 	<a href="{{url('registerPage')}}">新規登録</a>
