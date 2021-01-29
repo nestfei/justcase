@@ -11,6 +11,7 @@
 		会員情報の変更は下部のボタンからお進みください<br>
 		<a href="{{url('editInfo')}}">会員情報を変更</a>
 	</div>
+	<a href="{{url('logout')}}">ログアウト</a>
 	<h1>お客さんの注文履歴</h1>
 	<!--注文時間フィルター-->
 	<form method="post" action="{{url('myPage')}}">

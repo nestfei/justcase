@@ -38,8 +38,6 @@ class CartController extends Controller{
 			$uid=Cookie::get('uid_cookie');
 			//ユーザー情報を取得
 			$member=Member::where('id','=',$uid)->first();
-			/*var_dump($name);
-			exit;*/
 			$result=$this->readCart();
 			return view('orderpage',['cartInfos'=>$result[0],'quantity'=>$result[1],'member'=>$member]);
 		}

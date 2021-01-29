@@ -12,7 +12,7 @@ class MemberController extends Controller
   public function loginPage(Request $request){
 		if($request->cookie('auth_cookie')){
 			//自動ログイン
-			return view('welcome');
+			return view('homepage');
 		}
 		return view('login');
 	}
@@ -242,6 +242,14 @@ class MemberController extends Controller
 				location.href='editInfo';
 			</script>");	
 		}
+	}
+	
+	/*ログアウト*/
+	public function logout(){
+		$cookie1=Cookie::forget('auth_cookie');
+		$cookie2=Cookie::forget('lastname_cookie');
+		$cookie3=Cookie::forget('uid_cookie');
+		return redirect()->route('home')->withCookie($cookie1)->withCookie($cookie2)->withCookie($cookie3);
 	}
 	
 }

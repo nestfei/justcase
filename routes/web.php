@@ -32,6 +32,9 @@ Route::group(['middleware'=>['web']],function(){
 	Route::any('loginDao',['uses'=>'MemberController@loginDao']);
 });
 
+//ログアウト
+Route::any('logout',['uses'=>'MemberController@logout']);
+
 //マイページ
 Route::any('myPage',['uses'=>'OrderController@readOrder']);
 
