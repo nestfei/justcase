@@ -221,11 +221,11 @@ class MemberController extends Controller
 		$data=$request->input('Member');
 		$birth=$request->input('Birth');
 		//メールアドレス重複チェック
-		$repeat_check=Member::where('email','=',$data['email'])->get();
-		if(count($repeat_check)>1){
+		$uid=Cookie::get('uid_cookie');
+		$repeat_check=Member::where([['email','=',$data['email']],['id','<>',$uid]])->first();
+		if(isset($repeat_check)){
 			return redirect('editInfo')->with('email_existed','登録済のメールアドレスです')->withinput();
 		}else{
-			$uid=Cookie::get('uid_cookie');
 			$birth=$request->input('Birth');
 			$birth_str=$birth['y']."-".$birth['m']."-".$birth['d'];
 			//データを受け取る。Memberは配列
