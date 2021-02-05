@@ -1,6 +1,6 @@
 <div>
 <a href="{{url('homePage')}}">JUST CASE</a>
-<a href="#">商品一覧</a>
+<a href="{{url('test')}}">商品一覧</a>
 @if(isset($_COOKIE['lastname_cookie']))
 	<!--ログイン中-->
 	<!--マイページリンク-->

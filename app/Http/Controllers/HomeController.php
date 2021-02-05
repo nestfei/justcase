@@ -27,8 +27,11 @@ class HomeController extends Controller
 		//ホームページ
     public function homePage(){
 			$productsInfo=$this->newProducts();
-			$wish=$this->isWish($productsInfo);
-			return view('homepage',['productsInfo'=>$productsInfo,'wish'=>$wish]);
+			$wishNew=$this->isWish($productsInfo);
+			$topInfo=$this->ranking();
+			$wishTop=$this->isWish($topInfo);
+			$wish=$wishNew+$wishTop;
+			return view('homepage',['productsInfo'=>$productsInfo,'wish'=>$wish,'topInfo'=>$topInfo]);
 		}
 	
 		public function all(){
@@ -48,6 +51,22 @@ class HomeController extends Controller
 		public function newProducts(){
 			$productsInfo=DB::table('products as p')->leftJoin('procategory as c','p.procategory_id','=','c.id')->select('p.*','c.name as catename')->orderBy('createtime','DESC')->take(8)->get();
 			return $productsInfo;
+		}
+	
+		//人気ランキング 売上top4
+		public function ranking(){
+			$top_pid=DB::select(
+				"select products_id,sum(quantity) as sale 
+				from orddetails 
+				GROUP BY products_id  
+				ORDER BY sale DESC 
+				LIMIT 0,4;");
+			$top_pid_arr=[];
+			foreach($top_pid as $value){
+				$top_pid_arr[]=$value->products_id;
+			}
+			$topInfo=DB::table('products as p')->leftJoin('procategory as c','p.procategory_id','=','c.id')->wherein('p.id',$top_pid_arr)->select('p.*','c.name as catename')->get();
+			return $topInfo;
 		}
 	
 }

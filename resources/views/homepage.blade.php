@@ -12,7 +12,13 @@
 
 <!--カテゴリー-->
 @include('common.category')
-<!--全ての商品-->
+<!--商品-->
+<h1>RANKING</h1>
+@foreach($topInfo as $value)
+	@include('common.products')
+@endforeach
+
+<h1>NEW</h1>
 @foreach($productsInfo as $value)
 	@include('common.products')
 @endforeach

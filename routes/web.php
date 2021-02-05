@@ -95,8 +95,8 @@ Route::any('orderPage',['uses'=>'CartController@orderPage']);
 //注文する
 Route::any('ordered',['uses'=>'OrderController@order']);
 
-//注文一覧
-/*Route::any('readOrder',['uses'=>'OrderController@readOrder']);*/
+//test
+Route::any('test',['uses'=>'HomeController@isWish']);
 
 
 //ログイン判断　お気に入り、カート用
