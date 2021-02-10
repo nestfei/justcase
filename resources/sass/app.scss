@@ -1,1 +1,20 @@
-//
+// 全体設置
+
+@charset "utf-8";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #fff;
+    color: #000;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+        "Hiragino Sans", Meiryo, sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+@import "./components/header";

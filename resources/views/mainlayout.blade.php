@@ -2,16 +2,9 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>@yield('title','ホームページ')</title> 
-	<!--一時的なstyle-->
-	<style>
-		img{
-			height: 150px;
-		}
-		.search{
-			display: inline;
-		}
-	</style>
+    <title>@yield('title','ホームページ')</title>
+    <link rel="stylesheet" href="{{ asset("css/ress.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/app.css") }}">
 </head>
 <body>
 <div>
