@@ -1,0 +1,23 @@
+.Search {
+    max-width: 100%;
+    position: relative;
+    width: 30%;
+    &::after {
+        background-image: url("../../../public/images/icons/search.svg");
+        content: "";
+        display: inline-block;
+        height: 16px;
+        left: 16px;
+        position: absolute;
+        top: 8px;
+        width: 16px;
+    }
+    &__input {
+        border: 1px solid #000;
+        border-radius: 10px;
+        font-size: 14px;
+        height: auto;
+        padding: 8px 24px 8px 36px;
+        width: 100%;
+    }
+}

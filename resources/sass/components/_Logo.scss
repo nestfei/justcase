@@ -1,0 +1,15 @@
+.Logo {
+    display: inline-block;
+    width: 8%;
+    &__link {
+        color: #000;
+        text-decoration: none;
+    }
+    &__img {
+        max-width: 100%;
+    }
+}
+
+.Header__Logo {
+    margin-right: 0.25vw;
+}
