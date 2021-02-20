@@ -1,0 +1,17 @@
+.Search-products {
+  background: #fff;
+  height: auto;
+  padding: 18px;
+  &__outer-wrap {
+    display: flex;
+  }
+  &__title {
+    font-size: 16px;
+  }
+  &__link {
+    color: #000;
+    display: block;
+    font-size: 14px;
+    text-decoration: none;
+  }
+}

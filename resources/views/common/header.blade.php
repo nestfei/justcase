@@ -10,6 +10,8 @@
       <a class="Site-links__link" href="#">このサイトについて</a>
       <a class="Site-links__link" href="#">お問い合わせ</a>
     </div>
+    <!--カテゴリー-->
+    {{-- @include('common.category', ["class" => "Header__products"]) --}}
   </nav>
   <!--検索欄-->
   <form class="Search Header__search" action="{{url('searchProducts')}}" method="post">
@@ -35,13 +37,13 @@
     </li>
     <li class="Personal-nav__item">
       <!--買い物カートリンク-->
-      <a href="{{url('cartPage')}}">
+      <a href="{{url('wishPage')}}">
         <img class="Personal-nav__img" src="{{ asset("images/icons/favorite.svg")}}" alt="お気に入り">
       </a>
     </li>
     <li class="Personal-nav__item">
       <!--お気に入りリンク-->
-      <a href="{{url('wishPage')}}">
+      <a href="{{url('cartPage')}}">
         <img class="Personal-nav__img" src="{{ asset("images/icons/cart.svg")}}" alt="カートへ">
       </a>
     </li>

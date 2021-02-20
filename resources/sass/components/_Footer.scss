@@ -1,0 +1,11 @@
+.Footer {
+  background: #ff8383;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  padding: 40px 0;
+  place-items: center;
+  width: 100%;
+  &__links {
+    width: 25%;
+  }
+}

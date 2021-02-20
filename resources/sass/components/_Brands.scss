@@ -1,0 +1,46 @@
+.Brands {
+  margin: 20px auto 80px;
+  width: 55%;
+  &__title {
+    margin: 0 auto 40px;
+    width: 60%;
+  }
+  &__img-wrap {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    place-items: center;
+    width: 100%;
+  }
+  &__link {
+    border-radius: 12px;
+    display: block;
+    height: auto;
+    padding: 16px 8px 39px;
+    position: relative;
+    transition: .2s;
+    width: 100%;
+    &:hover {
+      background: rgba(255, 133, 133, 0.12);
+      &::after {
+        transform: translateX(16px);
+      }
+    }
+    &::after {
+      background-image: url("../../../public/images/icons/arrow.svg");
+      bottom: 8px;
+      content: "";
+      display: block;
+      height: 15px;
+      left: 45%;
+      position: absolute;
+      transition: .2s;
+      width: 15px;
+    }
+  }
+  &__img {
+    height: 120px;
+    object-fit: contain;
+    width: 100%;
+  }
+}
