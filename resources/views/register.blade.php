@@ -3,48 +3,102 @@
 @section('title','新規登録')
 
 @section('contents')
-	@include('common.validator')
+<div class="Register">
+  <h1 class="Contents-title">新規会員登録</h1>
+	<div class="Register__error">
+    @include('common.validator')
+  </div>
 	{{session('email_existed')}}
-	<form method="post" action="{{url('registerConfirm')}}">
-			{{csrf_field()}}
-			メールアドレス<input type="text" name="Member[email]" value="{{old('Member.email')}}{{$email}}"><br>
-			パスワード<input type="password" name="Member[password]"><br>
-			パスワード（再入力）<input type="password" name="comfirmpwd"><br>
-			パスワードは8文字以上20文字以内で入力してください<br>
-			<input type="checkbox">パスワードを表示する<br>
-			お名前
-			<input type="text" name="Member[lastname]" placeholder="姓" value="{{old('Member.lastname')}}{{$last}}">
-			<input type="text" name="Member[firstname]" placeholder="名" value="{{old('Member.firstname')}}{{$firstname}}"><br>
-			フリガナ
-			<input type="text" name="Member[lastname_huri]" placeholder="セイ" value="{{old('Member.lastname_huri')}}{{$lastname_huri}}">
-			<input type="text" name="Member[firstname_huri]" placeholder="メイ" value="{{old('Member.firstname_huri')}}{{$firstname_huri}}"><br>
-			性別
-			<input type="radio" name="Member[gender]" value="0" 
-						@if($gender==0 || old('Member.gender')==0)
-						 {{'checked="checked"'}}
-						@endif
-						 >男
-			<input type="radio" name="Member[gender]" value="1" 
-						@if($gender==1 || old('Member.gender')==1)
-						 {{'checked="checked"'}}
-						@endif
-						 >女
-			<input type="radio" name="Member[gender]" value="2" 
-						@if($gender==2 || old('Member.gender')==2)
-						 {{'checked="checked"'}}
-						@endif
-						 >その他<br>
-			生年月日
-			<select name="Birth[y]" id="year" value="{{old('Birth.y')}}{{$birth_y}}"></select>年
-			<select name="Birth[m]" id="month" value="{{old('Birth.m')}}{{$birth_m}}"></select>月
-			<select name="Birth[d]" id="day" value="{{old('Birth.d')}}{{$birth_d}}"></select>日<br>
-			郵便番号<input type="text" name="Member[post]" value="{{old('Member.post')}}{{$post}}"><br>
-			住所<input type="text" name="Member[prefecture]" placeholder="都道府県" value="{{old('Member.prefecture')}}{{$prefecture}}">
-			<input type="text" name="Member[town]" placeholder="市町村" value="{{old('Member.town')}}{{$town}}">
-			<input type="text" name="Member[address]" placeholder="以降の住所" value="{{old('Member.address')}}{{$address}}"><br>
-			電話番号<input type="text" name="Member[phone]" value="{{old('Member.phone')}}{{$phone}}"><br>
-			<input type="submit" value="登録">
-	</form>
+	<form class="Register__form" method="post" action="{{url('registerConfirm')}}">
+    <div class="Register__outer-wrapper">
+      <h2 class="Register__title">会員登録</h2>
+		{{csrf_field()}}
+		<div class="Register__inner-wrapper">
+      <label>メールアドレス</label>
+      <input class="Register__input" type="text" name="Member[email]" placeholder="example@example.com" value="{{old('Member.email')}}{{$email}}">
+    </div>
+    <div class="Register__inner-wrapper">
+      <label>パスワード</label>
+      <div class="Register__password">
+        <input class="Register__input" type="password" name="Member[password]">
+        <span>パスワードは8文字以上20文字以内で入力してください</span>
+      </div>
+    </div>
+    <div class="Register__inner-wrapper">
+      <label>パスワード(確認)</label>
+      <input class="Register__input" type="password" name="comfirmpwd">
+    </div>
+    <div class="Register__inner-wrapper">
+      <label>お名前</label>
+      <div class="Register__name">
+        <input class="Register__input" type="text" name="Member[lastname]" placeholder="姓" value="{{old('Member.lastname')}}{{$last}}">
+        <input class="Register__input" type="text" name="Member[firstname]" placeholder="名" value="{{old('Member.firstname')}}{{$firstname}}">
+      </div>
+    </div>
+    <div class="Register__inner-wrapper">
+      <label>フリガナ</label>
+      <div class="Register__name">
+        <input class="Register__input" type="text" name="Member[lastname_huri]" placeholder="セイ" value="{{old('Member.lastname_huri')}}{{$lastname_huri}}">
+        <input class="Register__input" type="text" name="Member[firstname_huri]" placeholder="メイ" value="{{old('Member.firstname_huri')}}{{$firstname_huri}}">
+      </div>
+    </div>
+    <div class="Register__inner-wrapper">
+      <label>性別</label>
+      <div class="Register__gender">
+        <div>
+          <input type="radio" name="Member[gender]" value="0" id="men"
+          @if($gender==0 || old('Member.gender')==0)
+            {{'checked="checked"'}}
+          @endif>
+          <label for="men">男</label>
+        </div>
+        <div>
+          <input type="radio" name="Member[gender]" value="1" id="women"
+          @if($gender==1 || old('Member.gender')==1)
+            {{'checked="checked"'}}
+          @endif>
+          <label for="women">女</label>
+        </div>
+        <div>
+          <input type="radio" name="Member[gender]" value="2" id="ohter"
+					@if($gender==2 || old('Member.gender')==2)
+            {{'checked="checked"'}}
+					@endif>
+          <label for="ohter">その他</label>
+        </div>
+      </div>
+    </div>
+    <div class="Register__inner-wrapper">
+      <label>生年月日</label>
+      <div class="Register__birthday">
+        <select class="Register__select" name="Birth[y]" id="year" value="{{old('Birth.y')}}{{$birth_y}}"></select>
+        <label>年</label>
+        <select class="Register__select" name="Birth[m]" id="month" value="{{old('Birth.m')}}{{$birth_m}}"></select>
+        <label>月</label>
+        <select class="Register__select" name="Birth[d]" id="day" value="{{old('Birth.d')}}{{$birth_d}}"></select>
+        <label>日</label>
+      </div>
+    </div>
+    <div class="Register__inner-wrapper Register__inner-wrapper--short">
+      <label>郵便番号</label>
+      <input class="Register__input" type="text" name="Member[post]" value="{{old('Member.post')}}{{$post}}">
+    </div>
+    <div class="Register__inner-wrapper Register__inner-wrapper--short">
+      <label>電話番号</label>
+      <input class="Register__input" type="text" name="Member[phone]" value="{{old('Member.phone')}}{{$phone}}">
+    </div>
+    <div class="Register__inner-wrapper Register__inner-wrapper--short">
+      <label>住所</label>
+      <div class="Register__address">
+        <input class="Register__input" type="text" name="Member[prefecture]" placeholder="都道府県" value="{{old('Member.prefecture')}}{{$prefecture}}">
+        <input class="Register__input" type="text" name="Member[town]" placeholder="市町村" value="{{old('Member.town')}}{{$town}}">
+        <input class="Register__input" type="text" name="Member[address]" placeholder="以降の住所" value="{{old('Member.address')}}{{$address}}">
+      </div>
+    </div>
+		<input class="Button Button--red Register__button" type="submit" value="確認画面へ">
+    </div>
+  </form>
+</div>
 	<script>
 		//生年月日セレクターのjs
 		 window.onload=function(){

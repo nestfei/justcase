@@ -1,0 +1,40 @@
+.Login {
+    margin: 0 auto 40px;
+    width: 100%;
+    &__form {
+        border: 1px solid #606060;
+        color: #606060;
+        margin: 0 auto;
+        padding: 16px;
+        text-align: center;
+        width: 50%;
+    }
+    &__title {
+        font-size: 14px;
+        font-weight: normal;
+        margin-bottom: 16px;
+    }
+    &__suggest {
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+    &__inner-wrapper {
+        align-items: center;
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        font-size: 14px;
+        margin: 24px auto;
+        text-align: left;
+        width: 50%;
+    }
+    &__input {
+        border: 1px solid #a4a4a4;
+        display: inline-block;
+        padding: 8px 16px;
+    }
+    &__button {
+        margin: 24px auto;
+        text-align: center;
+        width: 240px;
+    }
+}
