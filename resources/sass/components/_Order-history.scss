@@ -1,0 +1,47 @@
+.Order-history {
+    border: 1px solid #868686;
+    padding: 24px 32px;
+    &__title {
+        font-size: 20px;
+    }
+    &__select {
+        border: 1px solid #c0c0c0;
+        border-radius: 3px;
+        font-size: 12px;
+        margin: 16px 16px 16px 0;
+        padding: 8px 32px 8px 8px;
+    }
+    &__button {
+        display: inline-block;
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+    &__labels {
+        border-top: 1px solid #868686;
+        display: grid;
+        grid-gap: 16px;
+        grid-template-columns: 14.5% 20% 12% 1fr 1fr 1fr;
+        padding: 8px 0;
+    }
+    &__list {
+        align-items: center;
+        border-top: 1px solid #868686;
+        display: grid;
+        grid-gap: 16px;
+        grid-template-columns: 14.5% 20% 12% 1fr 1fr 1fr;
+        padding: 16px 0;
+        width: 100%;
+    }
+    &__text {
+        color: #000;
+        font-size: 14px;
+        a {
+            color: #000;
+            text-decoration: none;
+            transition: 0.2s;
+            &:hover {
+                color: #ff8383;
+            }
+        }
+    }
+}

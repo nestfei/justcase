@@ -17,6 +17,10 @@ img {
     max-width: 100%;
 }
 
+// pages
+@import "./pages//mypage.scss";
+
+// components
 @import "./components/Header";
 @import "./components/Logo";
 @import "./components/Personal-nav";
@@ -29,3 +33,6 @@ img {
 @import "./components/New-arrive";
 @import "./components/Footer";
 @import "./components/Search-products";
+@import "./components/Button";
+@import "./components/Contents-title";
+@import "./components/Order-history";

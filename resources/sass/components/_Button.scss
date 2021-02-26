@@ -1,0 +1,11 @@
+.Button {
+    color: #fff;
+    display: block;
+    height: auto;
+    padding: 1em 2em;
+    text-decoration: none;
+    width: auto;
+    &--red {
+        background: #f12c52;
+    }
+}

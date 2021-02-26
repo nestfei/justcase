@@ -1,0 +1,28 @@
+.Mypage {
+    text-align: left;
+    &__welcome {
+        display: block;
+        margin: 0 auto 48px;
+        width: 220px;
+    }
+    &__order-history {
+        margin: 0 auto 42px;
+        width: 75%;
+    }
+}
+
+.User-data-change {
+    border: 1px solid #868686;
+    margin: 0 auto 40px;
+    padding: 16px;
+    text-align: center;
+    width: 75%;
+    p {
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+    a {
+        margin: 8px auto;
+        width: 33%;
+    }
+}
