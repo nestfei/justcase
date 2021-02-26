@@ -42,8 +42,8 @@
         <span class="Order-history__label">金額</span>
         <span class="Order-history__label">注文状況</span>
       </div>
+      @foreach($orderInfos as $key=>$value)
       <div class="Order-history__list">
-        @foreach($orderInfos as $key=>$value)
         <div class="Order-history__img">
           <a href="{{url('proDetails',['products_id'=>$value->id])}}">
             <img src="{{asset($value->previewfile)}}">
@@ -64,8 +64,8 @@
         <div class="Order-history__text">
           {{$state[$key]}}
         </div>
-        @endforeach
       </div>
+      @endforeach
     </div>
   </div>
 	<!--注文履歴-->

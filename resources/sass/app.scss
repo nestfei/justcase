@@ -19,6 +19,8 @@ img {
 
 // pages
 @import "./pages//mypage.scss";
+@import "./pages/favorite.scss";
+@import "./pages/cart.scss";
 
 // components
 @import "./components/Header";

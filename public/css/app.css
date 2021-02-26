@@ -45,6 +45,156 @@ img {
   width: 33%;
 }
 
+.Favorite {
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.Favorite__list {
+  margin: 0 auto;
+  width: 75%;
+}
+
+.Favorite__label {
+  display: grid;
+  grid-gap: 32px;
+  grid-template-columns: 22% 25% 1fr 1fr 25%;
+  padding: 8px 0;
+}
+
+.Favorite__item {
+  align-items: center;
+  border-top: 1px solid #d5516e;
+  display: grid;
+  grid-gap: 32px;
+  grid-template-columns: 22% 25% 1fr 1fr 25%;
+  padding: 16px 0;
+}
+
+.Favorite__cart {
+  border: 1px solid #f12c52;
+  font-size: 14px;
+  margin-right: 16px;
+  padding: 6px 8px;
+}
+
+.Favorite__remove {
+  background: #f12c52;
+  color: #fff;
+  font-size: 14px;
+  padding: 6px 8px;
+}
+
+.Cart {
+  font-size: 14px;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.Cart__list {
+  margin: 0 auto;
+  width: 75%;
+}
+
+.Cart__label {
+  display: grid;
+  grid-gap: 32px;
+  grid-template-columns: 1fr 1fr 90px 80px 80px 120px;
+  padding: 8px 0;
+}
+
+.Cart__item {
+  align-items: center;
+  border-top: 1px solid #d5516e;
+  display: grid;
+  grid-gap: 32px;
+  grid-template-columns: 1fr 1fr 90px 80px 80px 120px;
+  padding: 16px 0;
+}
+
+.Cart__text {
+  color: #000000;
+  display: block;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.Cart__text:hover {
+  color: #f12c52;
+}
+
+.Cart__button {
+  border: 1px solid #959595;
+  display: grid;
+  font-size: 14px;
+  grid-template-columns: 30px 30px;
+  grid-template-rows: 1fr 1fr;
+  padding: 0 8px;
+  width: 70px;
+}
+
+.Cart__button .text_box {
+  display: block;
+  grid-column: 1/2;
+  grid-row: 1/3;
+}
+
+.Cart__button .btn_up {
+  cursor: pointer;
+  display: block;
+  height: 20px;
+  grid-column: 2/3;
+  grid-row: 1/2;
+  position: relative;
+}
+
+.Cart__button .btn_up::after {
+  border-style: solid;
+  border-width: 0 5px 7px 5px;
+  border-color: transparent transparent #000000 transparent;
+  height: 0;
+  content: "";
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  width: 0;
+}
+
+.Cart__button .btn_up:focus {
+  outline: none;
+}
+
+.Cart__button .btn_down {
+  cursor: pointer;
+  display: block;
+  height: 20px;
+  grid-column: 2/3;
+  grid-row: 2/3;
+  position: relative;
+}
+
+.Cart__button .btn_down::after {
+  border-style: solid;
+  border-width: 7px 5px 0 5px;
+  border-color: #000000 transparent transparent transparent;
+  bottom: 8px;
+  content: "";
+  height: 0;
+  position: absolute;
+  right: 8px;
+  width: 0;
+}
+
+.Cart__button .btn_down:focus {
+  outline: none;
+}
+
+.Cart .remove_cart {
+  background: #f12c52;
+  color: #fff;
+  padding: 8px 16px;
+}
+
 .Header {
   align-items: center;
   display: flex;

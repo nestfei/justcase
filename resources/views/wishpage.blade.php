@@ -5,49 +5,47 @@
 @section('lastname',$lastname)
 
 @section('contents')
-	<h1>お気に入りリスト</h1>
-	<table>
-		<tr>
-			<td></td>
-			<td>商品名</td>
-			<td>単価</td>
-			<td>在庫</td>
-		</tr>
-	@foreach($wishInfos as $value)
-	<tr><!--商品div-->
-		<td>
-		<!--商品画像-->
-		<a href="{{url('proDetails',['products_id'=>$value->id])}}"><img src="{{asset($value->previewfile)}}"></a>
-		</td>
-		<td>
-		<!--商品名-->
-		<a href="{{url('proDetails',['products_id'=>$value->id])}}">{{$value->name}}</a>
-		</td>
-		<td>
-		<!--単価-->
-		&yen;{{$value->price}}
-		</td>
-		<td>
-		<!--在庫-->
-		@if($value->store>0)
-		在庫あり
-		@else
-		在庫なし
-		</td>
-		@endif
-		<td>
-			<div id="{{$value->id}}">
-			<!--同じidをカート機能とお気に入り機能に使うために、カートボタンとお気に入りボタンを同じdivに入れた-->
-				<!--買い物カートボタン-->
-				<button class='cart'>カートに入れる</button>
-				<!--お気に入りボタン-->
-				<button class='remove_wish'>削除</button>
-			</div>
-		</td>
-	</tr>
-	@endforeach
-	</table>
-
+<div class="Favorite">
+  <h1 class="Contents-title">お気に入り商品</h1>
+  <div class="Favorite__list">
+    <div class="Favorite__label">
+      <span></span>
+      <span>商品名</span>
+      <span>単価</span>
+      <span>在庫状況</span>
+      <span></span>
+    </div>
+    @foreach($wishInfos as $value)
+    <div class="Favorite__item">
+      <div class="Favorite__img">
+        <a href="{{url('proDetails',['products_id'=>$value->id])}}">
+          <img src="{{asset($value->previewfile)}}">
+        </a>
+      </div>
+      <div class="Favorite__text">
+        <a href="{{url('proDetails',['products_id'=>$value->id])}}">{{$value->name}}</a>
+      </div>
+      <div class="Favorite__text">
+        &yen;{{$value->price}}
+      </div>
+      <div class="Favorite__text">
+        @if($value->store>0)
+          在庫あり
+        @else
+          在庫なし
+        @endif
+      </div>
+      <div id="{{$value->id}}">
+        <!--同じidをカート機能とお気に入り機能に使うために、カートボタンとお気に入りボタンを同じdivに入れた-->
+        <!--買い物カートボタン-->
+        <button class='Favorite__cart'>カートに入れる</button>
+        <!--お気に入りボタン-->
+        <button class='Favorite__remove'>削除</button>
+      </div>
+    </div>
+    @endforeach
+  </div>
+</div>
 @section('js')
 	@parent
 	<!--お気に入りajax-->

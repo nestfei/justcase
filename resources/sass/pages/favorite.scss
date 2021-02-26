@@ -1,0 +1,34 @@
+.Favorite {
+    margin-bottom: 40px;
+    width: 100%;
+    &__list {
+        margin: 0 auto;
+        width: 75%;
+    }
+    &__label {
+        display: grid;
+        grid-gap: 32px;
+        grid-template-columns: 22% 25% 1fr 1fr 25%;
+        padding: 8px 0;
+    }
+    &__item {
+        align-items: center;
+        border-top: 1px solid #d5516e;
+        display: grid;
+        grid-gap: 32px;
+        grid-template-columns: 22% 25% 1fr 1fr 25%;
+        padding: 16px 0;
+    }
+    &__cart {
+        border: 1px solid #f12c52;
+        font-size: 14px;
+        margin-right: 16px;
+        padding: 6px 8px;
+    }
+    &__remove {
+        background: #f12c52;
+        color: #fff;
+        font-size: 14px;
+        padding: 6px 8px;
+    }
+}
