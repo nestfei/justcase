@@ -122,13 +122,13 @@
     <script type="text/javascript">
 			@if(!isset($_COOKIE['uid_cookie']))
 			/*ログインしていないとログインページにとぶ*/
-					$('.wish').on('click',function(){
+					$('.Product-detail__wish').on('click',function(){
 						location.href="{{url('loginPage')}}";
 					});
 			@else
 			/*ログインしている*/
-				var btnText=$('.wish').text();
-        $('.wish').on('click',function () {
+				var btnText=$('.Product-detail__wish').text();
+        $('.Product-detail__wish').on('click',function () {
             var pid = {{$productInfo[0]->id}};
 						if(btnText=="お気に入りに追加する"){/*お気に入りに追加*/
 								$.ajax({
@@ -138,8 +138,8 @@
 									dataType:'json',
 									success:function (data) {
 											if(data.status==0){
-													$('.wish').text('お気に入りに追加済');/*←お気に入りに追加した後の状態*/
-													btnText=$('.wish').text()
+													$('.Product-detail__wish').text('お気に入りに追加済');/*←お気に入りに追加した後の状態*/
+													btnText=$('.Product-detail__wish').text()
 											}
 											if(data.status==1){
 													alert(data.msg);
@@ -159,8 +159,8 @@
 									dataType:'json',
 									success:function (data) {
 											if(data.status==0){
-													$('.wish').text('お気に入りに追加する');/*←お気に入りに追加した後の状態*/
-													btnText=$('.wish').text()
+													$('.Product-detail__wish').text('お気に入りに追加する');/*←お気に入りに追加した後の状態*/
+													btnText=$('.Product-detail__wish').text()
 											}
 											if(data.status==1){
 													alert(data.msg);
@@ -181,13 +181,13 @@
 		<script type="text/javascript">
 			@if(!isset($_COOKIE['uid_cookie']))
 			/*ログインしていないとログインページにとぶ*/
-					$('.cart').on('click',function(){
+					$('.Product-detail__cart').on('click',function(){
 						location.href="{{url('loginPage')}}";
 					});
 			@else
 			/*ログインしている*/
 			/*買い物カートに追加するajax*/
-        $('.cart').on('click',function () {
+        $('.Product-detail__cart').on('click',function () {
             var pid = {{$productInfo[0]->id}};
 								$.ajax({
 									type:'POST',

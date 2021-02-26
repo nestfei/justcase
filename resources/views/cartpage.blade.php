@@ -42,56 +42,10 @@
       </div>
     </div>
     @endforeach
+    <a class="Cart__link Button Button--red" href="{{url('orderPage')}}">レジに進む</a>
+  <a class="Cart__link Button Button--red" href="{{url('homePage')}}">買い物をつづける</a>
   </div>
 </div>
-	{{-- <h1>買い物カート</h1>
-<table>
-	<tr>
-		<td></td>
-		<td>商品名</td>
-		<td>単価</td>
-		<td>数量</td>
-		<td>小計</td>
-	</tr>
-@foreach($cartInfos as $value)
-	<tr class="cart_product"><!--商品div-->
-		<!--商品画像-->
-		<td>
-		<a href="{{url('proDetails',['products_id'=>$value->id])}}"><img src="{{asset($value->previewfile)}}"></a>
-		</td>
-		<td>
-		<!--商品名-->
-		<a href="{{url('proDetails',['products_id'=>$value->id])}}">{{$value->name}}</a>
-		</td>
-		<td>
-		<!--単価-->
-		&yen;<span class="price">{{$value->price}}</span>
-		</td>
-		<td>
-		<div id="{{$value->id}}">
-		<!--数量-->
-			<input class="text_box" type="text" name="number" value="{{$quantity[$value->id]}}">
-			<!--メモ：inputに入力できる数字を1-100の整数に限定するjsは書いていない。
-							フロントエンドさんお願いします_(:3 」∠ )_-->
-			<button class="btn_up">+</button>
-			<button class="btn_down">-</button>
-		</div>
-		</td>
-		<td>
-			<!--小計-->
-			&yen;<span class="sub_total"></span>
-		</td>
-		<td>
-		<!--カートから削除ボタン-->
-		<a href="{{url('removeCart',['pid'=>$value->id])}}"><button class='remove_cart'>削除</button></a>
-		</td>
-	</tr>
-@endforeach
-</table>
-<!--合計-->
-合計<span class="total"></span><br>
-<a href="{{url('orderPage')}}">レジに進む</a><br>
-<a href="{{url('homePage')}}">買い物をつづける</a> --}}
 
 @section('js')
 	@parent

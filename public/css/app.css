@@ -662,6 +662,17 @@ img {
   outline: none;
 }
 
+.Cart__link {
+  margin: 0 0 16px auto;
+  text-align: center;
+  transition: 0.2s;
+  width: 240px;
+}
+
+.Cart__link:hover {
+  opacity: 0.7;
+}
+
 .Cart .remove_cart {
   background: #f12c52;
   color: #fff;
@@ -963,5 +974,115 @@ img {
 
 .Product-detail .swiper-container.slider-thumbnail .swiper-wrapper .swiper-slide.swiper-slide-thumb-active {
   opacity: 1;
+}
+
+.Order {
+  width: 100%;
+}
+
+.Order__inner-wrapper {
+  margin: 0 auto;
+  width: 75%;
+}
+
+.Order__label {
+  border-bottom: 1px solid #d5516e;
+  border-top: 1px solid #d5516e;
+  color: #d5516e;
+  display: grid;
+  font-size: 14px;
+  grid-gap: 32px;
+  grid-template-columns: 1fr 1fr 120px 120px 120px;
+  margin-bottom: 16px;
+  padding: 16px 0;
+}
+
+.Order__detail {
+  align-items: center;
+  border-bottom: 1px solid #d5516e;
+  display: grid;
+  grid-gap: 32px;
+  grid-template-columns: 1fr 1fr 120px 120px 120px;
+  padding: 16px 0;
+}
+
+.Order__name {
+  color: #000;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.Order__name:hover {
+  color: #d5516e;
+}
+
+.Order__info {
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: 1fr 1fr;
+  margin: 40px auto 0;
+  width: 75%;
+}
+
+.Order__info-title {
+  color: #d5516e;
+  font-size: 24px;
+  margin: 0 0 16px 0;
+}
+
+.Order__user-data {
+  display: grid;
+  font-size: 14px;
+  grid-template-columns: 120px 1fr;
+  margin-bottom: 8px;
+}
+
+.Order__links {
+  margin: 0 auto;
+  width: 75%;
+}
+
+.Order__link {
+  margin-bottom: 16px;
+  text-align: center;
+  transition: 0.2s;
+  width: 280px;
+}
+
+.Order__link:hover {
+  opacity: 0.7;
+}
+
+.Order__complete {
+  margin: 0 0 0 auto;
+  width: 280px;
+}
+
+.Order__total {
+  display: inline-block;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.Order__total .total {
+  color: #d5516e;
+  font-size: 28px;
+  margin-left: 60px;
+}
+
+.Order-finish {
+  width: 100%;
+}
+
+.Order-finish__inner-wrapper {
+  padding: 120px 0;
+  text-align: center;
+}
+
+.Order-finish__inner-wrapper a {
+  display: inline-block;
+  margin: 40px 0;
+  text-align: center;
+  width: 300px;
 }
 
