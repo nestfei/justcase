@@ -330,6 +330,10 @@ img {
   width: 25px;
 }
 
+.result {
+  background: #eee;
+}
+
 .new {
   background: #fff3a7;
 }
@@ -373,6 +377,10 @@ img {
   width: 25%;
 }
 
+.Footer__links a {
+  color: #fff;
+}
+
 .Search-products {
   background: #fff;
   box-shadow: 0 0 3px #eee;
@@ -383,6 +391,7 @@ img {
   position: absolute;
   top: 70px;
   width: 65vw;
+  z-index: 999;
 }
 
 .Search-products__outer-wrap {
@@ -536,6 +545,17 @@ img {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   margin: 40px auto;
   width: 80%;
+}
+
+.Banner {
+  margin: 40px auto;
+  width: 80%;
+}
+
+.Banner img {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .Mypage {
@@ -1138,5 +1158,18 @@ img {
   margin: 40px 0;
   text-align: center;
   width: 300px;
+}
+
+.Result {
+  margin: 40px auto;
+  width: 80%;
+}
+
+.Result__products {
+  display: grid;
+  gap: 40px 32px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  margin: 40px auto;
 }
 

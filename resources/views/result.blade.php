@@ -5,47 +5,44 @@
 @section('lastname',$lastname)
 
 @section('contents')
+<div class="Result">
+  <div class="Bread-list">
+    <a class="Bread-list__link" href="{{url('homePage')}}">TOP</a>
+    >
+    @if(isset($cateNo))
+      <!--親機種-->
+      @foreach($cateIdArray as $key=>$parent)
+        @foreach($parent as $son)
+          @if($son==$cateNo)
+            <a　class="Bread-list__link" href="{{url('categoryPage',['cateNo'=>$key])}}">
+              {{$cateNameArray[$key]}}</a>
+              >
+          @break
+          @endif
+        @endforeach
+      @endforeach
+      <!--機種-->
+      <span class="Bread-list__link">{{$cateNameArray[$cateNo]}}</span>
+    @elseif(isset($desCateNo))
+      <!--デザイン-->
+      <span class="Bread-list__link">{{$descateNameArray[$desCateNo]}}</span>
+    @elseif(isset($input))
+      <!--検査した言葉-->
+      <span class="Bread-list__link">"{{$input}}"の検索結果</span>
+    @endif
+    </div>
+    <!--検索した言葉-->
+    @if(isset($input))
+    <h1 class="Result__title">"{{$input}}"の検索結果</h1>
+    @endif
 
-<!--スライドショー-->
-<!--{{--@include('common.slider')--}}-->
-
-<!--カテゴリー-->
-<!--{{--@include('common.category')--}}-->
-
-<!--パンくず-->
-<a href="{{url('homePage')}}">TOP</a>
->
-@if(isset($cateNo))
-	<!--親機種-->
-	@foreach($cateIdArray as $key=>$parent)
-		@foreach($parent as $son)
-			@if($son==$cateNo)
-				<a href="{{url('categoryPage',['cateNo'=>$key])}}">
-					{{$cateNameArray[$key]}}</a>
-					>
-			@break
-			@endif
-		@endforeach
-	@endforeach
-	<!--機種-->
-	{{$cateNameArray[$cateNo]}}
-@elseif(isset($desCateNo))
-	<!--デザイン-->
-	{{$descateNameArray[$desCateNo]}}
-@elseif(isset($input))
-	<!--検査した言葉-->
-	"{{$input}}"の検索結果
-@endif
-
-<!--検索した言葉-->
-@if(isset($input))
-	<h1>"{{$input}}"の検索結果</h1>
-@endif
-
-<!--商品-->
-	@foreach($cateproducts as $value)
-		@include('common.products')
-	@endforeach
+    <!--商品-->
+    <div class="Result__products">
+      @foreach($cateproducts as $value)
+        @include('common.products', ["class" => "result"])
+      @endforeach
+    </div>
+</div>
 
 @endsection
 @section('js')

@@ -1,7 +1,7 @@
 <footer class="Footer">
   <div class="Logo Footer__logo">
     <a class="Logo__link" href="{{url('homePage')}}">
-      <img class="Logo__img" src="{{ asset("images/logo.svg") }}" alt="Just case">
+      <img class="Logo__img" src="{{ asset("images/footer_logo.svg") }}" alt="Just case">
     </a>
   </div>
   <div class="Site-links Footer__links">

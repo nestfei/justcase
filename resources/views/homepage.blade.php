@@ -51,9 +51,6 @@
   </a>
 </div>
 
-<!--スライドショー-->
-{{-- @include('common.slider') --}}
-
 <!--商品-->
 <h1 class="Title Categories__title">RANKING</h1>
 <div class="Ranking">
@@ -68,6 +65,10 @@
 	@include('common.products', ["class" => "new"])
   @endforeach
   <a class="New-arrive__more" href="">read more →</a>
+</div>
+
+<div class="Banner">
+  <img src="{{ asset("images/banner.png") }}" alt="">
 </div>
 
 @endsection
