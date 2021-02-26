@@ -37,7 +37,7 @@ class HomeController extends Controller
 		public function all(){
 			$productsInfo=$this->allProducts();
 			$wish=$this->isWish($productsInfo);
-			return view('homepage',['productsInfo'=>$productsInfo,'wish'=>$wish]);
+			return view('allproducts',['productsInfo'=>$productsInfo,'wish'=>$wish]);
 		}
 	
 		//全ての商品
