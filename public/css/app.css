@@ -102,7 +102,8 @@ img {
 
 .Personal-nav__auth {
   display: none;
-  border: 1px solid #f00;
+  background: #fff;
+  border: 1px solid #fff;
   padding: 8px 24px 8px 40px;
   left: -36px;
   position: absolute;
@@ -124,14 +125,14 @@ img {
 
 .Personal-nav__auth::after {
   border-color: rgba(255, 255, 255, 0);
-  border-bottom-color: #f00;
+  border-bottom-color: #fff;
   border-width: 12px;
   margin-left: -12px;
 }
 
 .Personal-nav__auth::before {
   border-color: rgba(255, 255, 255, 0);
-  border-bottom-color: #f00;
+  border-bottom-color: #fff;
   border-width: 12px;
   margin-left: -12px;
 }
