@@ -33,6 +33,7 @@ img {
 @import "./components/Button";
 @import "./components/Contents-title";
 @import "./components/Order-history";
+@import "./components/Bread_list";
 
 // pages
 @import "./pages//mypage.scss";
@@ -41,3 +42,4 @@ img {
 @import "./pages/login.scss";
 @import "./pages/register.scss";
 @import "./pages/register_confirm.scss";
+@import "./pages/product_detail.scss";

@@ -1,0 +1,9 @@
+.Bread-list__link {
+    color: #f35376;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: none;
+    &:hover {
+        opacity: 0.5;
+    }
+}

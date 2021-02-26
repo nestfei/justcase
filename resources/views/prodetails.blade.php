@@ -5,63 +5,115 @@
 @section('lastname',$lastname)
 
 @section('contents')
-
-<!--パンくず-->
-<a href="{{url('homePage')}}">TOP</a>
-><!--親機種-->
-@foreach($cateIdArray as $key=>$parent)
-	@foreach($parent as $son)
-		@if($son==$proCate[0]->category_no)
-			<a href="{{url('categoryPage',['cateNo'=>$key])}}">
-				{{$cateNameArray[$key]}}</a>
-		@break
-		@endif
+<div class="Product-detail">
+  <div class="Bread-list">
+    <!--パンくず-->
+  <a class="Bread-list__link" href="{{url('homePage')}}">TOP</a>
+  ><!--親機種-->
+  @foreach($cateIdArray as $key=>$parent)
+  @foreach($parent as $son)
+  @if($son==$proCate[0]->category_no)
+  <a class="Bread-list__link" href="{{url('categoryPage',['cateNo'=>$key])}}">
+    {{$cateNameArray[$key]}}
+  </a>
+  @break
+  @endif
 	@endforeach
-@endforeach
-><!--機種-->
-<a href="{{url('categoryPage',['cateNo'=>$proCate[0]->category_no])}}">
-{{$proCate[0]->name}}</a>
-><!--商品名-->
-{{$productInfo[0]->name}}
-<br>
+  @endforeach
+  ><!--機種-->
+  <a class="Bread-list__link" href="{{url('categoryPage',['cateNo'=>$proCate[0]->category_no])}}">
+  {{$proCate[0]->name}}</a>
+  ><!--商品名-->
+  <span class="Bread-list__link">{{$productInfo[0]->name}}</span>
+  </div>
 
-<!--商品詳細情報-->
+<div class="Product-detail__main">
+  <!--商品詳細情報-->
 	<!--詳細画像-->
-	<img src="{{asset($productInfo[0]->previewfile)}}">
-	<img src="{{asset($alldetails[0]->thumb01file)}}">
-	<img src="{{asset($alldetails[0]->thumb02file)}}">
-	<img src="{{asset($alldetails[0]->thumb03file)}}">
-	<br>
-	<!--商品名-->
-	商品名：{{$productInfo[0]->name}}
-	<!--機種-->
-	機種：<a href="{{url('categoryPage',['cateNo'=>$proCate[0]->category_no])}}">
-	{{$proCate[0]->name}}</a>
-	<!--値段-->
-	値段：{{$productInfo[0]->price}}円
-	<!--タグ-->
-	タグ：
-	@foreach($descateIds as $value)
-	<a href="{{url('categoryDesPage',['cateNo'=>$value])}}">
-	{{$descateNameArray[$value]}}</a>
-	@endforeach
-	<!--在庫-->
-	@if($productInfo[0]->store>0)
-	在庫あり
-	@else
-	在庫なし
-	@endif
-	<!--お気に入りボタン-->
-	<button class='wish'>{{$button}}</button>
-	<!--買い物カートボタン-->
-	<button class='cart'>カートに入れる</button>
-	<br>
-	<!--おすすめ-->
-	この商品に似てるやつ
-	@foreach($similar as $value)
-	<a href="{{url('proDetails',['products_id'=>$value->id])}}">
-	<img src="{{asset($value->previewfile)}}"></a>
-	@endforeach
+  <div class="Product-detail__images">
+	<div class="swiper-container slider">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="{{asset($productInfo[0]->previewfile)}}">
+      </div>
+      <div class="swiper-slide">
+        <img src="{{asset($alldetails[0]->thumb01file)}}">
+      </div>
+      <div class="swiper-slide">
+        <img src="{{asset($alldetails[0]->thumb02file)}}">
+      </div>
+      <div class="swiper-slide">
+        <img src="{{asset($alldetails[0]->thumb03file)}}">
+      </div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+  <div class="swiper-container slider-thumbnail">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="{{asset($productInfo[0]->previewfile)}}">
+        </div>
+        <div class="swiper-slide">
+          <img src="{{asset($alldetails[0]->thumb01file)}}">
+        </div>
+        <div class="swiper-slide">
+          <img src="{{asset($alldetails[0]->thumb02file)}}">
+        </div>
+        <div class="swiper-slide">
+          <img src="{{asset($alldetails[0]->thumb03file)}}">
+        </div>
+    </div>
+  </div>
+</div>
+	<div class="Product-detail__data">
+    <!--商品名-->
+    <h1 class="Product-detail__name">{{$productInfo[0]->name}}</h1>
+    <!--機種-->
+    <a class="Product-detail__model-name" href="{{url('categoryPage',['cateNo'=>$proCate[0]->category_no])}}">
+      {{$proCate[0]->name}}
+    </a>
+    <!--値段-->
+    <p class="Product-detail__price">&yen;{{$productInfo[0]->price}}</p>
+    <!--タグ-->
+    <div class="Product-detail__tag">
+      @foreach($descateIds as $value)
+      <a href="{{url('categoryDesPage',['cateNo'=>$value])}}">
+        {{$descateNameArray[$value]}}
+      </a>
+      @endforeach
+    </div>
+    <!--在庫-->
+    <p class="Product-detail__stock">
+      @if($productInfo[0]->store>0)
+        在庫あり
+      @else
+        在庫なし
+      @endif
+    </p>
+    <!--買い物カートボタン-->
+    <button class='Product-detail__cart'>カートに入れる</button>
+    <!--お気に入りボタン-->
+    <button class='Product-detail__wish'>{{$button}}</button>
+  </div>
+</div>
+  <p class="Product-detail__precautions">
+    ※一度キャンセルされましたご注文は後から戻すことができません。あらかじめご了承ください。<br>
+    なお、商品によりましては在庫切れにより、同一商品（限定商品、特典付商品など）の再注文ができない場合がございます。
+  </p>
+  <p class="Product-detail__precautions">
+    ※上記条件内でもご注文確定後にキャンセルができない商品が一部ございます。<br>
+    商品詳細をよくご確認のうえご注文をお願いいたします。
+  </p>
+	<div class="Product-detail__suggest">
+    <!--おすすめ-->
+    <h2>その他関連商品</h2>
+    @foreach($similar as $value)
+    <a href="{{url('proDetails',['products_id'=>$value->id])}}">
+      <img src="{{asset($value->previewfile)}}"></a>
+    @endforeach
+  </div>
+</div>
 @endsection
 
 @section('js')
@@ -154,4 +206,24 @@
         });
 			@endif
 		</script>
+    <script>
+      //サムネイル
+var sliderThumbnail = new Swiper('.slider-thumbnail', {
+  slidesPerView: 4,
+  freeMode: true,
+  watchSlidesVisibility: true,
+  watchSlidesProgress: true,
+});
+
+//スライダー
+var slider = new Swiper('.slider', {
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  thumbs: {
+    swiper: sliderThumbnail
+  }
+});
+    </script>
 @endsection

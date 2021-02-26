@@ -473,6 +473,17 @@ img {
   color: #ff8383;
 }
 
+.Bread-list__link {
+  color: #f35376;
+  cursor: pointer;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.Bread-list__link:hover {
+  opacity: 0.5;
+}
+
 .Mypage {
   text-align: left;
 }
@@ -826,5 +837,131 @@ img {
 
 .Register-confirm__button--back {
   background: #606060;
+}
+
+.Product-detail {
+  margin: 40px auto;
+  padding: 0 120px;
+  width: 100%;
+}
+
+.Product-detail__main {
+  border-bottom: 1px solid #000;
+  display: grid;
+  grid-gap: 42px;
+  grid-template-columns: 1fr 1fr;
+  padding: 0 0 24px;
+  margin: 16px 0 40px;
+}
+
+.Product-detail__name {
+  font-size: 24px;
+  font-weight: normal;
+  margin-bottom: 16px;
+}
+
+.Product-detail__model-name {
+  color: #000;
+  font-size: 14px;
+  margin-bottom: 16px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.Product-detail__model-name:hover {
+  color: #f12c52;
+}
+
+.Product-detail__price {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.Product-detail__tag {
+  margin-bottom: 16px;
+}
+
+.Product-detail__tag a {
+  color: #3361ad;
+  font-size: 14px;
+  margin: 0 8px 16px 0;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.Product-detail__tag a:hover {
+  opacity: 0.7;
+}
+
+.Product-detail__stock {
+  color: #999;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.Product-detail__cart {
+  background: #e73962;
+  color: #fff;
+  margin-bottom: 16px;
+  padding: 16px 0;
+  transition: 0.2s;
+  width: 100%;
+}
+
+.Product-detail__cart:hover {
+  opacity: 0.7;
+}
+
+.Product-detail__wish {
+  background: #e73962;
+  color: #fff;
+  padding: 16px 0;
+  transition: 0.2s;
+  width: 100%;
+}
+
+.Product-detail__wish:hover {
+  opacity: 0.7;
+}
+
+.Product-detail__precautions {
+  color: #999;
+  font-size: 14px;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+.Product-detail__suggest {
+  width: 100%;
+}
+
+.Product-detail__suggest h2 {
+  color: #ff6666;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.Product-detail__suggest img {
+  display: inline-block;
+  height: auto;
+  width: 300px;
+}
+
+.Product-detail .swiper-container {
+  width: 36vw;
+}
+
+.Product-detail .swiper-container.slider {
+  height: 36vw;
+}
+
+.Product-detail .swiper-container.slider-thumbnail .swiper-wrapper .swiper-slide {
+  width: 25%;
+  opacity: 0.5;
+  overflow: hidden;
+}
+
+.Product-detail .swiper-container.slider-thumbnail .swiper-wrapper .swiper-slide.swiper-slide-thumb-active {
+  opacity: 1;
 }
 

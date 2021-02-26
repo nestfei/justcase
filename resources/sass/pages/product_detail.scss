@@ -1,0 +1,110 @@
+.Product-detail {
+    margin: 40px auto;
+    padding: 0 120px;
+    width: 100%;
+    &__main {
+        border-bottom: 1px solid #000;
+        display: grid;
+        grid-gap: 42px;
+        grid-template-columns: 1fr 1fr;
+        padding: 0 0 24px;
+        margin: 16px 0 40px;
+    }
+    &__name {
+        font-size: 24px;
+        font-weight: normal;
+        margin-bottom: 16px;
+    }
+    &__model-name {
+        color: #000;
+        font-size: 14px;
+        margin-bottom: 16px;
+        text-decoration: none;
+        transition: 0.2s;
+        &:hover {
+            color: #f12c52;
+        }
+    }
+    &__price {
+        font-size: 18px;
+        margin-bottom: 16px;
+    }
+    &__tag {
+        margin-bottom: 16px;
+        a {
+            color: #3361ad;
+            font-size: 14px;
+            margin: 0 8px 16px 0;
+            text-decoration: none;
+            transition: 0.2s;
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+    &__stock {
+        color: #999;
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+    &__cart {
+        background: #e73962;
+        color: #fff;
+        margin-bottom: 16px;
+        padding: 16px 0;
+        transition: 0.2s;
+        width: 100%;
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+    &__wish {
+        background: #e73962;
+        color: #fff;
+        padding: 16px 0;
+        transition: 0.2s;
+        width: 100%;
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+    &__precautions {
+        color: #999;
+        font-size: 14px;
+        line-height: 1.75;
+        margin-bottom: 16px;
+    }
+    &__suggest {
+        width: 100%;
+        h2 {
+            color: #ff6666;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        img {
+            display: inline-block;
+            height: auto;
+            width: 300px;
+        }
+    }
+    .swiper-container {
+        width: 36vw;
+        //スライダー
+        &.slider {
+            height: 36vw;
+        }
+        //サムネイル
+        &.slider-thumbnail {
+            .swiper-wrapper {
+                .swiper-slide {
+                    width: 25%;
+                    opacity: 0.5;
+                    overflow: hidden;
+                    &.swiper-slide-thumb-active {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
