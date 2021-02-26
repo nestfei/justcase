@@ -101,6 +101,12 @@ __webpack_require__.r(__webpack_exports__);
 document.querySelector("#js-toggle-auth").addEventListener("click", function () {
   Object(_toggleAuthNav__WEBPACK_IMPORTED_MODULE_0__["toggleAuthNav"])();
 });
+document.querySelector("#search_products_open").addEventListener("click", function () {
+  document.querySelector(".Search-products").style.display = "block";
+});
+document.querySelector("#search_products_close").addEventListener("click", function () {
+  document.querySelector(".Search-products").style.display = "none";
+});
 
 /***/ }),
 

@@ -1,17 +1,50 @@
 .Search-products {
-  background: #fff;
-  height: auto;
-  padding: 18px;
-  &__outer-wrap {
-    display: flex;
-  }
-  &__title {
-    font-size: 16px;
-  }
-  &__link {
-    color: #000;
-    display: block;
-    font-size: 14px;
-    text-decoration: none;
-  }
+    background: #fff;
+    box-shadow: 0 0 3px #eee;
+    display: none;
+    margin: 0 auto;
+    left: 0;
+    padding: 18px;
+    position: absolute;
+    top: 70px;
+    width: 65vw;
+    &__outer-wrap {
+        display: grid;
+        grid-gap: 16px;
+        grid-template-columns: repeat(5, 1fr);
+    }
+    &__item {
+        margin-bottom: 8px;
+    }
+    &__title {
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+    &__link {
+        color: #000;
+        display: inline-block;
+        font-size: 14px;
+        text-decoration: none;
+    }
+    &__radio {
+        display: inline-block;
+    }
+    &__operation {
+        display: flex;
+        justify-content: end;
+        margin: 0 0 0 auto;
+        width: 30%;
+    }
+    &__button {
+        display: inline-block;
+        margin: 0 0 0 auto;
+        width: 250px;
+    }
+    &__close {
+        border: 1px solid #000;
+        display: inline-block;
+        margin: 0 16px 0 auto;
+        text-align: center;
+        width: 250px;
+    }
 }

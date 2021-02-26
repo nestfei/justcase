@@ -6,12 +6,12 @@
   </div>
   <nav class="Header__nav">
     <div class="Site-links">
-      <a class="Site-links__link" href="#">商品一覧</a>
+      <a class="Site-links__link" id="search_products_open">商品一覧</a>
       <a class="Site-links__link" href="#">このサイトについて</a>
       <a class="Site-links__link" href="#">お問い合わせ</a>
     </div>
     <!--カテゴリー-->
-    {{-- @include('common.category', ["class" => "Header__products"]) --}}
+    @include('common.category')
   </nav>
   <!--検索欄-->
   <form class="Search Header__search" action="{{url('searchProducts')}}" method="post">

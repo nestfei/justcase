@@ -14,33 +14,53 @@
 <h1 class="Title">OUR BRAND</h1>
 <div class="Brands">
   <div class="Brands__img-wrap">
-    <a class="Brands__link" href="">
+    <a class="Brands__link" href="{{ url("categoryPage/1") }}">
       <img class="Brands__img" src="{{ asset("images/icons/iphone.svg") }}" alt="iphone">
     </a>
-    <a class="Brands__link" href="">
+    <a class="Brands__link" href="{{ url("categoryPage/2") }}">
       <img class="Brands__img" src="{{ asset("images/icons/galaxy.svg") }}" alt="galaxy">
     </a>
-    <a class="Brands__link" href="">
+    <a class="Brands__link" href="{{ url("categoryPage/3") }}">
       <img class="Brands__img" src="{{ asset("images/icons/xperia.svg") }}" alt="xperia">
     </a>
-    <a class="Brands__link" href="">
+    <a class="Brands__link" href="{{ url("categoryPage/4") }}">
       <img class="Brands__img" src="{{ asset("images/icons/huawei.svg") }}" alt="huawei">
     </a>
   </div>
 </div>
 
+<h1 class="Title Categories__title">CATEGORY</h1>
 <div class="Categories">
-  <h1 class="Title Categories__title">CATEGORY</h1>
+  <a href="{{ url("categoryDesPage/1")}}">
+    <img src="{{ asset("images/category_link1.png")}}" alt="">
+  </a>
+  <a href="{{ url("categoryDesPage/2")}}">
+    <img src="{{ asset("images/category_link2.png")}}" alt="">
+  </a>
+  <a href="{{ url("categoryDesPage/3")}}">
+    <img src="{{ asset("images/category_link3.png")}}" alt="">
+  </a>
+  <a href="{{ url("categoryDesPage/5")}}">
+    <img src="{{ asset("images/category_link4.png")}}" alt="">
+  </a>
+  <a href="{{ url("categoryDesPage/6")}}">
+    <img src="{{ asset("images/category_link5.png")}}" alt="">
+  </a>
+  <a href="{{ url("categoryDesPage/4")}}">
+    <img src="{{ asset("images/category_link6.png")}}" alt="">
+  </a>
 </div>
 
 <!--スライドショー-->
 {{-- @include('common.slider') --}}
 
 <!--商品-->
-<h1>RANKING</h1>
-{{-- @foreach($topInfo as $value)
-	@include('common.products')
-@endforeach --}}
+<h1 class="Title Categories__title">RANKING</h1>
+<div class="Ranking">
+  @foreach($topInfo as $value)
+	@include('common.products', ["class" => "ranking"])
+  @endforeach
+</div>
 
 <h1 class="Title">NEW ARRIVE</h1>
 <div class="New-arrive">

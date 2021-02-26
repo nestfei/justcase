@@ -34,13 +34,6 @@ img {
   margin: 0 4vw;
 }
 
-.Header__products {
-  left: 0;
-  position: absolute;
-  top: 100%;
-  width: 80vw;
-}
-
 .Logo {
   display: inline-block;
   width: 8%;
@@ -210,6 +203,7 @@ img {
 
 .Site-links__link {
   color: #000;
+  cursor: pointer;
   display: inline-block;
   text-decoration: none;
 }
@@ -339,6 +333,10 @@ img {
   background: #fff3a7;
 }
 
+.ranking {
+  background: #ffcccc;
+}
+
 .New-arrive {
   display: grid;
   gap: 40px 32px;
@@ -376,23 +374,61 @@ img {
 
 .Search-products {
   background: #fff;
-  height: auto;
+  box-shadow: 0 0 3px #eee;
+  display: none;
+  margin: 0 auto;
+  left: 0;
   padding: 18px;
+  position: absolute;
+  top: 70px;
+  width: 65vw;
 }
 
 .Search-products__outer-wrap {
-  display: flex;
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.Search-products__item {
+  margin-bottom: 8px;
 }
 
 .Search-products__title {
   font-size: 16px;
+  margin-bottom: 16px;
 }
 
 .Search-products__link {
   color: #000;
-  display: block;
+  display: inline-block;
   font-size: 14px;
   text-decoration: none;
+}
+
+.Search-products__radio {
+  display: inline-block;
+}
+
+.Search-products__operation {
+  display: flex;
+  justify-content: end;
+  margin: 0 0 0 auto;
+  width: 30%;
+}
+
+.Search-products__button {
+  display: inline-block;
+  margin: 0 0 0 auto;
+  width: 250px;
+}
+
+.Search-products__close {
+  border: 1px solid #000;
+  display: inline-block;
+  margin: 0 16px 0 auto;
+  text-align: center;
+  width: 250px;
 }
 
 .Button {
@@ -482,6 +518,23 @@ img {
 
 .Bread-list__link:hover {
   opacity: 0.5;
+}
+
+.Categories {
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  margin: 40px auto;
+  width: 80%;
+}
+
+.Ranking {
+  display: grid;
+  gap: 40px 32px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: 40px auto;
+  width: 80%;
 }
 
 .Mypage {
