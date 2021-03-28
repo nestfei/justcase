@@ -1,8 +1,15 @@
 .Main-visual {
     margin: 0 auto;
-    max-width: 1080px;
     width: 100%;
     &__img {
         max-width: 100%;
+    }
+    .swiper-container {
+        height: 400px;
+        width: 1200px;
+        .swiper-slide {
+            height: 400px;
+            width: 1200px;
+        }
     }
 }

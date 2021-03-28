@@ -3,6 +3,7 @@
     display: flex;
     justify-content: space-between;
     width: 14%;
+    z-index: 999;
     &__item {
         cursor: pointer;
         list-style: none;

@@ -57,6 +57,7 @@ img {
   display: flex;
   justify-content: space-between;
   width: 14%;
+  z-index: 999;
 }
 
 .Personal-nav__item {
@@ -211,12 +212,21 @@ img {
 
 .Main-visual {
   margin: 0 auto;
-  max-width: 1080px;
   width: 100%;
 }
 
 .Main-visual__img {
   max-width: 100%;
+}
+
+.Main-visual .swiper-container {
+  height: 400px;
+  width: 1200px;
+}
+
+.Main-visual .swiper-container .swiper-slide {
+  height: 400px;
+  width: 1200px;
 }
 
 .Title {
@@ -325,6 +335,7 @@ img {
 .Product__favorite-button {
   height: 25px;
   position: absolute;
+  outline: none;
   right: 8px;
   top: 8px;
   width: 25px;
@@ -947,6 +958,7 @@ img {
 
 .Product-detail__model-name {
   color: #000;
+  display: block;
   font-size: 14px;
   margin-bottom: 16px;
   text-decoration: none;

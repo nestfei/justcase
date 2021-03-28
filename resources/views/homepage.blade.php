@@ -8,7 +8,25 @@
 @section('contents')
 
 <div class="Main-visual">
-  <img class="Main-visual__img" src="{{ asset("images/main_visual.png") }}" alt="">
+  <div class="swiper-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <img src="{{ asset("images/slider1.jpg")}}">
+    </div>
+    <div class="swiper-slide">
+      <img src="{{ asset("images/slider2.png")}}">
+    </div>
+    <div class="swiper-slide">
+      <img src="{{ asset("images/slider3.png")}}">
+    </div>
+    <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+  </div>
+</div>
 </div>
 
 <h1 class="Title">OUR BRAND</h1>
@@ -64,7 +82,7 @@
   @foreach($productsInfo as $value)
 	@include('common.products', ["class" => "new"])
   @endforeach
-  <a class="New-arrive__more" href="">read more →</a>
+  <a class="New-arrive__more" href="{{url('allProducts')}}">read more →</a>
 </div>
 
 <div class="Banner">
@@ -130,4 +148,22 @@
         });
 			@endif
 		</script>
+    <script>
+      var swiper = new Swiper('.swiper-container', {
+  // Optional parameters
+  direction: 'horizontal',
+  loop: true,
+
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+});
+    </script>
 @endsection

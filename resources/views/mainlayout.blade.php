@@ -5,7 +5,7 @@
     <title>@yield('title','ホームページ')</title>
     <link rel="stylesheet" href="{{ asset("css/ress.css") }}">
     <link rel="stylesheet" href="{{ asset("css/app.css") }}">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
 </head>
 <body>
 <div>
